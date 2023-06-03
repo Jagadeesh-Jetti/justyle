@@ -1,12 +1,13 @@
 .productsLayout{
     display: flex;
     flex-wrap: wrap;
+    margin-top: 1rem;
 }
 .productCard{
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
-    height: 450px;
+    height: 400px;
     justify-content: space-around;
     text-align: left;
     
@@ -34,7 +35,7 @@
 
 .productImage {
   max-width: 200px;
-  height: 300px;
+  height: 250px;
   object-fit: cover;
   /* background-image: center; */
 }

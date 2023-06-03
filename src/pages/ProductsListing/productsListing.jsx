@@ -10,12 +10,6 @@ export const ProductsListing = () => {
       <Navbar />
 
       <ProductCard products={dataState.products} />
-      {/* {dataState.products.map((product) => (
-        <div key={product.id}>
-          <h1>{product.category}</h1>
-          <h1>{product.rating}</h1>
-        </div>
-      ))} */}
     </div>
   );
 };
