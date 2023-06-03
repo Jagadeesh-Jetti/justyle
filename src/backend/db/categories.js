@@ -8,20 +8,21 @@ import { v4 as uuid } from "uuid";
 export const categories = [
   {
     _id: uuid(),
-    categoryName: "fiction",
-    description:
-      "literature in the form of prose, especially novels, that describes imaginary events and people",
+    categoryName: "Men",
+    description: "",
+    thumbnail : "https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_500,h_500/global/539023/08/mod01/fnd/IND/fmt/png/BMW-M-Motorsport-Statement-All-Over-Print-Men's-T-Shirt",
   },
   {
     _id: uuid(),
-    categoryName: "non-fiction",
-    description:
-      "Non-fiction is writing that gives information or describes real events, rather than telling a story.",
+    categoryName: "Women",
+    // picture: "/images/Home/women_category.jpg",
+    description: "",
+    thumbnail: "https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_500,h_500/global/537075/67/mod01/fnd/IND/fmt/png/T7-Printed-Track-Jacket-Women",
   },
   {
     _id: uuid(),
-    categoryName: "horror",
-    description:
-      "Meant to cause discomfort and fear for both the character and readers, horror writers often make use of supernatural and paranormal elements in morbid stories that are sometimes a little too realistic.",
+    categoryName: "Kids",
+    description: "",
+    thumbnail: "https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_500,h_500/global/676581/58/mod01/fnd/IND/fmt/png/Super-PUMA-Printed-Graphic-Youth-T-Shirt",    
   },
 ];
