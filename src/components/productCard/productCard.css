@@ -1,0 +1,44 @@
+.productsLayout{
+    display: flex;
+    flex-wrap: wrap;
+}
+.productCard{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    height: 450px;
+    justify-content: space-around;
+    text-align: left;
+    
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0 10px 30px;
+    background-color: rgb(224, 197, 197);
+    box-shadow: 0 0 0 rgba(232, 236, 239, 0);
+    transition: box-shadow 0.3s ease;
+    &:hover {
+      /* Set the desired box shadow when hovered */
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+      }
+}
+
+.productsImageDiv {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: cover;
+    align-items: center;
+  }
+
+.productImage {
+  max-width: 200px;
+  height: 300px;
+  object-fit: cover;
+  /* background-image: center; */
+}
+
+.content{
+    margin-left: 0.5rem;
+}

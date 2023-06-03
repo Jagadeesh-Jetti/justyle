@@ -1,5 +1,5 @@
 import axios from "axios";
 
-export const getProducts = axios.get("/api/products");
+export const getProducts = async () => axios.get("/api/products");
 
-export const getCategories = axios.get("/api/categories");
+export const getCategories = async () => axios.get("/api/categories");

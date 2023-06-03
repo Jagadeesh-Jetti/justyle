@@ -11,19 +11,19 @@ export const DataContextProvider = ({ children }) => {
   useEffect(() => {
     const fetch = async () => {
       try {
-        const productsResponse = getProducts();
+        const productsResponse = await getProducts();
         if (productsResponse.status === 200) {
           dataDispatch({
             type: DATAACTIONS.FETCH_PRODUCTS,
-            payload: { products: productsResponse.data.products },
+            payload: productsResponse.data.products,
           });
         }
 
-        const categoryResponse = getCategories();
+        const categoryResponse = await getCategories();
         if (categoryResponse.status === 200) {
           dataDispatch({
             type: DATAACTIONS.FETCH_CATEGORIES,
-            payload: { categories: categoryResponse.data.categories },
+            payload: categoryResponse.data.categories,
           });
         }
       } catch (error) {
