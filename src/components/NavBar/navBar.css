@@ -4,3 +4,26 @@
     justify-content: space-around;
     background-color: beige;
 }
+
+.categoryNav{
+    display: flex;
+    flex-wrap: wrap;
+    width: 20rem;
+}
+
+.navSearch{
+    margin-top: 1rem;
+    width: 35rem;
+    height: 2rem;
+    position: relative;
+    border: 1px solid rgb(185, 185, 236);
+  }
+  .inputSearch{
+    width: 100%;
+    font-size: 1rem ;
+    border: 1px solid yellow;
+    border-radius: 0.375rem;
+    padding: .2rem .65rem;
+    box-sizing: border-box;
+  }
+

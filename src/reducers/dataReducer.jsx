@@ -15,6 +15,12 @@ export const DataReducer = (state, action) => {
         products: action.payload,
       };
     }
+    case DATAACTIONS.FETCH_CATEGORIES: {
+      return {
+        ...state,
+        categories: action.payload,
+      };
+    }
     default:
       return state;
   }
