@@ -3,11 +3,14 @@ import "../NavBar/navBar.css";
 // import { useContext } from "react";
 // import { filterContext } from "../../contexts/filterContext";
 
-// import { useContext } from "react";
-// import { dataContext } from "../../contexts/dataContext";
+import { useContext } from "react";
+import { dataContext } from "../../contexts/dataContext";
+import { filterContext } from "../../contexts/filterContext";
+import { FILTERACTIONS } from "../../reducers/Actions/FIlterActions";
 
 export const Navbar = () => {
-  // const { dataState } = useContext(dataContext);
+  const { dataState } = useContext(dataContext);
+  const { filterDispatch, filterState } = useContext(filterContext);
   // const categories = dataState.categories.reduce(
   //   (acc, cur) =>
   //     acc.includes(cur.categoryName) ? acc : [...acc, cur.categoryName],
@@ -75,11 +78,28 @@ export const Navbar = () => {
           type="search"
           placeholder="Search for products"
           className="inputSearch"
+          value={filterState.searchedValue}
+          onChange={(e) =>
+            filterDispatch({
+              type: FILTERACTIONS.FILTER_BY_SEARCH,
+              payload: e.target.value,
+            })
+          }
         />
       </div>
 
-      <h3>Wishlist</h3>
-      <h3>Cart</h3>
+      <Link to="/wishlist">
+        <h3>Wishlist ({dataState.wishlist.length}) </h3>
+      </Link>
+
+      <Link to="/cart">
+        <h3>Cart ({dataState.cart.length}) </h3>
+      </Link>
+
+      <Link to="/signup">
+        <h3>Signup</h3>
+      </Link>
+
       <h3>Account</h3>
     </div>
   );
