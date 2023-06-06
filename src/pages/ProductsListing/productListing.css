@@ -1,0 +1,10 @@
+/* .mainPage{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+} */
+.listingBody{
+    display: flex;
+    flex-wrap: wrap;
+   
+}

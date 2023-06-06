@@ -1,0 +1,9 @@
+.categoryCheckbox{
+    align-items: left;
+}
+.rating_numbers{
+    display: flex;
+}
+.filters-header{
+    display: flex;
+}
