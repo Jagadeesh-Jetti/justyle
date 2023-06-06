@@ -2,6 +2,9 @@ import { FILTERACTIONS } from "./Actions/FIlterActions";
 
 export const initialFilterState = {
   selectedCategory: [],
+  selectedPriceSort: "",
+  selectedRating: "",
+  searchedValue: "",
 };
 
 export const FilterReducer = (state, action) => {
@@ -16,6 +19,34 @@ export const FilterReducer = (state, action) => {
           : [...state.selectedCategory, action.payload],
       };
     }
+    case FILTERACTIONS.FILTER_BY_PRICE: {
+      return {
+        ...state,
+        selectedPriceSort: action.payload,
+      };
+    }
+    case FILTERACTIONS.FILTER_BY_RATING: {
+      return {
+        ...state,
+        selectedRating: action.payload,
+      };
+    }
+    case FILTERACTIONS.FILTER_BY_SEARCH: {
+      return {
+        ...state,
+        searchedValue: action.payload,
+      };
+    }
+    case FILTERACTIONS.CLEAR: {
+      return {
+        ...state,
+        selectedCategory: [],
+        selectedPriceSort: "",
+        selectedRating: "",
+        searchedValue: "",
+      };
+    }
+
     default:
       return state;
   }

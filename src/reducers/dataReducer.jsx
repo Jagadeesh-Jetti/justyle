@@ -21,6 +21,18 @@ export const DataReducer = (state, action) => {
         categories: action.payload,
       };
     }
+    case DATAACTIONS.FETCH_CART: {
+      return {
+        ...state,
+        cart: action.payload,
+      };
+    }
+    case DATAACTIONS.FETCH_WISHLIST: {
+      return {
+        ...state,
+        wishlist: action.payload,
+      };
+    }
     default:
       return state;
   }
