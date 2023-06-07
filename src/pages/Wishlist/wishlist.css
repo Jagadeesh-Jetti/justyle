@@ -6,3 +6,9 @@
     width: 100%;
     justify-content: space-around;
   }
+
+  .footer{
+    margin-top: 4rem;
+    display: flex;
+    flex-wrap: wrap;
+  }
