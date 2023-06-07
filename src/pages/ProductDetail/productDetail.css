@@ -1,4 +1,4 @@
-.main-layout{
+.cards-layout{
     display: flex;
 
 }
@@ -6,3 +6,8 @@
     width: 20rem;
     height: 25rem;
 }
+.footer{
+    margin-top: 4rem;
+    display: flex;
+    flex-wrap: wrap;
+  }
