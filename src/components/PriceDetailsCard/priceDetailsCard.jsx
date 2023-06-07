@@ -1,4 +1,7 @@
+import { useNavigate } from "react-router-dom";
+
 export const PriceDetailsCard = ({ products }) => {
+  const navigate = useNavigate();
   const totalOriginalPrice = products.reduce(
     (acc, { original_price, quantity }) =>
       acc + Number(original_price) * Number(quantity),
@@ -42,6 +45,8 @@ export const PriceDetailsCard = ({ products }) => {
           <h3> Total Amount </h3>
           <h3> {totalFinalPrice} </h3>
         </div>
+
+        <button onClick={() => navigate("/checkout")}> Check out </button>
       </div>
     </div>
   );
