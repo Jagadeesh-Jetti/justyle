@@ -4,9 +4,11 @@ import { cartContext } from "../../contexts/cartContext";
 import { dataContext } from "../../contexts/dataContext";
 import { wishlistContext } from "../../contexts/wishlistContext";
 import { Link, useNavigate } from "react-router-dom";
+import { authContext } from "../../contexts/authContext";
 
 export const ProductCard = ({ products, fromWishlist }) => {
   const { addToCartHandler, isProductInCart } = useContext(cartContext);
+  const { authState } = useContext(authContext);
 
   const {
     addToWishlistHandler,
@@ -39,16 +41,22 @@ export const ProductCard = ({ products, fromWishlist }) => {
 
               {fromWishlist ? (
                 <button
-                  onClick={() => removeFromWishlistHandler(_id, dataDispatch)}
+                  onClick={() => {
+                    authState.isLoggedIn
+                      ? removeFromWishlistHandler(_id, dataDispatch)
+                      : navigate("/login");
+                  }}
                 >
                   Remove from wishlist
                 </button>
               ) : (
                 <button
                   onClick={() => {
-                    isProductInWishlist(_id)
-                      ? navigate("/cart")
-                      : addToWishlistHandler(product, dataDispatch);
+                    authState.isLoggedIn
+                      ? isProductInWishlist(_id)
+                        ? navigate("/cart")
+                        : addToWishlistHandler(product, dataDispatch)
+                      : navigate("/login");
                   }}
                 >
                   {isProductInWishlist(_id)
@@ -67,9 +75,11 @@ export const ProductCard = ({ products, fromWishlist }) => {
 
               <button
                 onClick={() => {
-                  isProductInCart(_id)
-                    ? navigate("/cart")
-                    : addToCartHandler(product, dataDispatch);
+                  authState.isLoggedIn
+                    ? isProductInCart(_id)
+                      ? navigate("/cart")
+                      : addToCartHandler(product, dataDispatch)
+                    : navigate("/login");
                 }}
               >
                 {isProductInCart(_id) ? "Go to Cart" : "Add to Cart"}
