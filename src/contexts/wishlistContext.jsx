@@ -47,6 +47,7 @@ export const WishlistContextProvider = ({ children }) => {
           type: DATAACTIONS.FETCH_WISHLIST,
           payload: fetchData.data.wishlist,
         });
+        toast.warning("Removed from Wishlist");
       }
     } catch (error) {
       console.error(error);

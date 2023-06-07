@@ -1,12 +1,13 @@
-import { createContext, useContext, useReducer, useState } from "react";
+import React, { createContext, useContext, useReducer, useState } from "react";
 import { AuthReducer, InitialAuthState } from "../reducers/authReducer";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 import "react-toastify/dist/ReactToastify.css";
-import { dataContext } from "./dataContext";
+// import { dataContext } from "./dataContext";
 import { DATAACTIONS } from "../reducers/Actions/DataActions";
+import { dataContext } from "./dataContext";
 
 export const authContext = createContext();
 
@@ -69,7 +70,6 @@ export const AuthContextProvider = ({ children }) => {
       });
 
       if (response.status == 200) {
-        // authDispatch({ type: "HANDLE_SIGN_IN", payload: true });
         localStorage.setItem(
           "GuestuserToken",
           JSON.stringify(response.data.encodedToken)
@@ -94,12 +94,12 @@ export const AuthContextProvider = ({ children }) => {
     try {
       const response = await axios.post("/api/auth/login", userLoginDetails);
       if (response.status == 200) {
-        authDispatch({ type: "toggleIsLoggedIN", payload: true });
         localStorage.setItem(
           "loginToken",
           JSON.stringify(response.data.encodedToken)
         );
         navigate("/products");
+        authDispatch({ type: "toggleIsLoggedIN", payload: true });
         toast.success("Signed in successfully.", {
           style: {
             fontSize: "large",
@@ -108,6 +108,7 @@ export const AuthContextProvider = ({ children }) => {
             color: "whitesmoke",
           },
         });
+        console.log(userDetails);
       }
     } catch (error) {
       console.log(error);
@@ -119,10 +120,6 @@ export const AuthContextProvider = ({ children }) => {
     // dataDispatch({ type: DATAACTIONS.LOGOUT });
     localStorage.removeItem("GuestuserToken");
   };
-
-  // useEffect(() => {
-  //   guestLogin();
-  // }, []);
 
   const values = {
     authState,

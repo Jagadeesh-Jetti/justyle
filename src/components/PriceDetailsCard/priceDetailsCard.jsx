@@ -1,52 +1,43 @@
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { cartContext } from "../../contexts/cartContext";
+import "../PriceDetailsCard/priceDetailsCard.css";
+import { Button } from "@mui/material";
 
 export const PriceDetailsCard = ({ products }) => {
   const navigate = useNavigate();
-  const totalOriginalPrice = products.reduce(
-    (acc, { original_price, quantity }) =>
-      acc + Number(original_price) * Number(quantity),
-    0
-  );
-
-  const totalDiscount = products.reduce(
-    (acc, { price, original_price, quantity }) =>
-      acc + (Number(original_price) - Number(price) * Number(quantity)),
-    0
-  );
-
-  const totalFinalPrice = products.reduce(
-    (acc, { price, quantity }) => acc + Number(price) * Number(quantity),
-    0
-  );
+  const { totalMRP, totalDiscount, totalFinalPrice } = useContext(cartContext);
 
   return (
     <div>
       <div>
         <h2> Price Details ({products.length} items)</h2>
 
-        <div>
+        <div className="item-pdc">
           <p>Total MRP </p>
-          <p>{totalOriginalPrice}</p>
+          <p>{totalMRP}</p>
         </div>
 
-        <div>
+        <div className="item-pdc">
           <p>Discount on MRP</p>
           <p>{totalDiscount}</p>
         </div>
 
-        <div>
+        <div className="item-pdc">
           <p> Convenience Fee </p>
           <p>Free</p>
         </div>
 
         <hr />
 
-        <div>
+        <div className="item-pdc">
           <h3> Total Amount </h3>
           <h3> {totalFinalPrice} </h3>
         </div>
 
-        <button onClick={() => navigate("/checkout")}> Check out </button>
+        <Button className="btn-pdc" onClick={() => navigate("/checkout")}>
+          Check out
+        </Button>
       </div>
     </div>
   );

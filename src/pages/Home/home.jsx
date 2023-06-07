@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { Navbar } from "../../components/NavBar/navBar";
 import { dataContext } from "../../contexts/dataContext";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { filterContext } from "../../contexts/filterContext";
 import { FILTERACTIONS } from "../../reducers/Actions/FIlterActions";
 
@@ -13,9 +13,19 @@ import { Loader } from "../../components/Loader/loader";
 export const Home = () => {
   const { dataState } = useContext(dataContext);
   const { filterDispatch } = useContext(filterContext);
+  const navigate = useNavigate();
   return (
-    <div>
+    <div className="home-container">
       <Navbar />
+      <div className="imageBannerDiv">
+        <img
+          src="/home_banner_1.jpg"
+          alt="Banner_Image"
+          className="bannerImage"
+          onClick={() => navigate("/products")}
+        />
+      </div>
+
       <h2> Select from various categories</h2>
 
       {dataState.categories.length === 0 ? (

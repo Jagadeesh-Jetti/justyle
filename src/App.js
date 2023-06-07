@@ -9,6 +9,8 @@ import { Login } from "./pages/Login/login";
 import { ProductDetail } from "./pages/ProductDetail/productDetail";
 import { RequireAuth } from "./services/RequireAuth";
 import { Checkout } from "./pages/Checkout/checkout";
+import { OrderConfirmation } from "./pages/OrderConfirmation/orderConfirmation";
+import AddressForm from "./components/Address/address";
 
 
 function App() {
@@ -32,6 +34,8 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/checkout" element={<Checkout />} />
+        <Route path="/oc" element={<OrderConfirmation />} />
+        <Route path="/address" element={<AddressForm />} />
         <Route path="/product/:productId" element={<ProductDetail />} />
 
         

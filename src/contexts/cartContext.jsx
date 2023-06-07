@@ -58,10 +58,30 @@ export const CartContextProvider = ({ children }) => {
     return dataState.cart.find(({ _id }) => _id === productId);
   };
 
+  const totalMRP = dataState?.cart.reduce(
+    (acc, { original_price, qty }) =>
+      acc + Number(original_price) * Number(qty),
+    0
+  );
+
+  const totalDiscount = dataState?.cart?.reduce(
+    (acc, { price, original_price, qty }) =>
+      acc + (Number(original_price) - Number(price)) * Number(qty),
+    0
+  );
+
+  const totalFinalPrice = dataState?.cart?.reduce(
+    (acc, { price, qty }) => acc + Number(price) * Number(qty),
+    0
+  );
+
   const values = {
     addToCartHandler,
     removeFromCartHandler,
     isProductInCart,
+    totalMRP,
+    totalDiscount,
+    totalFinalPrice,
   };
 
   return (

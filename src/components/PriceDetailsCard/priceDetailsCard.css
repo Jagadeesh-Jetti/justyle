@@ -1,0 +1,8 @@
+.item-pdc{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.btn-pdc{
+    background-color: rgb(216, 132, 7);
+}

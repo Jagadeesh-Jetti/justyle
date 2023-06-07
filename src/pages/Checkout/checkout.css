@@ -1,0 +1,8 @@
+.checkout-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.address-card{
+    border: 1px solid black;
+}

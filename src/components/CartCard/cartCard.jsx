@@ -35,7 +35,7 @@ export const CartCard = ({ products }) => {
               >
                 {isProductInWishlist(_id)
                   ? "Go to Wishlist"
-                  : "Add to Wishlist"}
+                  : "Move to Wishlist"}
               </button>
               <button onClick={() => removeFromCartHandler(_id, dataDispatch)}>
                 Remove from Cart

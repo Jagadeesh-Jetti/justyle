@@ -1,16 +1,21 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../NavBar/navBar.css";
 // import { useContext } from "react";
 // import { filterContext } from "../../contexts/filterContext";
 
 import { useContext } from "react";
 import { dataContext } from "../../contexts/dataContext";
+import { authContext } from "../../contexts/authContext";
 import { filterContext } from "../../contexts/filterContext";
 import { FILTERACTIONS } from "../../reducers/Actions/FIlterActions";
+import { DATAACTIONS } from "../../reducers/Actions/DataActions";
 
 export const Navbar = () => {
-  const { dataState } = useContext(dataContext);
+  const { dataState, dataDispatch } = useContext(dataContext);
   const { filterDispatch, filterState } = useContext(filterContext);
+  const { authState, authDispatch } = useContext(authContext);
+  const navigate = useNavigate();
+
   // const categories = dataState.categories.reduce(
   //   (acc, cur) =>
   //     acc.includes(cur.categoryName) ? acc : [...acc, cur.categoryName],
@@ -96,11 +101,22 @@ export const Navbar = () => {
         <h3>Cart ({dataState.cart.length}) </h3>
       </Link>
 
-      <Link to="/signup">
-        <h3>Signup</h3>
-      </Link>
-
-      <h3>Account</h3>
+      {authState?.isLoggedIn ? (
+        <Link
+          onClick={() => {
+            dataDispatch({ type: DATAACTIONS.LOGOUT });
+            localStorage.removeItem("GuestuserToken");
+            authDispatch({ type: "toggleIsLoggedIN", payload: false });
+            navigate("/login");
+          }}
+        >
+          <h3>Log out</h3>
+        </Link>
+      ) : (
+        <Link to="/login">
+          <h3>Login</h3>
+        </Link>
+      )}
     </div>
   );
 };
