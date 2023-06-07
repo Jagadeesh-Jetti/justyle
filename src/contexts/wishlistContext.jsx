@@ -2,6 +2,8 @@ import axios from "axios";
 import { createContext, useContext } from "react";
 import { DATAACTIONS } from "../reducers/Actions/DataActions";
 import { dataContext } from "./dataContext";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const wishlistContext = createContext();
 
@@ -24,6 +26,7 @@ export const WishlistContextProvider = ({ children }) => {
           type: DATAACTIONS.FETCH_WISHLIST,
           payload: response.data.wishlist,
         });
+        toast.success("Added to wishlist");
       }
       // console.log(response.data.wishlist);
     } catch (error) {

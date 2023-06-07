@@ -2,6 +2,8 @@ import axios from "axios";
 import { createContext, useContext } from "react";
 import { DATAACTIONS } from "../reducers/Actions/DataActions";
 import { dataContext } from "./dataContext";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const cartContext = createContext();
 
@@ -25,6 +27,7 @@ export const CartContextProvider = ({ children }) => {
           type: DATAACTIONS.FETCH_CART,
           payload: response.data.cart,
         });
+        toast.success("Added to cart");
       }
     } catch (error) {
       console.log(error);
@@ -44,6 +47,7 @@ export const CartContextProvider = ({ children }) => {
           type: DATAACTIONS.FETCH_CART,
           payload: fetchData.data.cart,
         });
+        toast.warning("Removed from cart");
       }
     } catch (error) {
       console.error(error);
@@ -60,5 +64,21 @@ export const CartContextProvider = ({ children }) => {
     isProductInCart,
   };
 
-  return <cartContext.Provider value={values}>{children}</cartContext.Provider>;
+  return (
+    <cartContext.Provider value={values}>
+      {children}
+      <ToastContainer
+        position="top-right"
+        autoClose={1500}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
+    </cartContext.Provider>
+  );
 };
