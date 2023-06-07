@@ -33,6 +33,13 @@ export const DataReducer = (state, action) => {
         wishlist: action.payload,
       };
     }
+    case DATAACTIONS.LOGOUT: {
+      return {
+        ...state,
+        wishlist: [],
+        cart: [],
+      };
+    }
     default:
       return state;
   }
