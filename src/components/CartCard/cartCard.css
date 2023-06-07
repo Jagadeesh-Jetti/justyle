@@ -1,8 +1,13 @@
-.main-container{
+.main-container-cart{
     display: flex;
     flex-wrap: wrap;
+    flex-direction: column;
 }
 .image{
-    width: 20px;
-    height: 25px;
+    width: 15px;
+    height: 15px;
+}
+.card-cart {
+    display: flex;
+    flex-wrap: wrap;
 }

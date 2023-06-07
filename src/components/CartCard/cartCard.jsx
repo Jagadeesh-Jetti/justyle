@@ -11,12 +11,13 @@ export const CartCard = ({ products }) => {
   const { removeFromCartHandler } = useContext(cartContext);
   const { dataDispatch } = useContext(dataContext);
   const navigate = useNavigate();
+
   return (
-    <div>
+    <div className="main-container-cart">
       {products.map((product) => {
         const { _id, image, title, original_price, price, size } = product;
         return (
-          <div key={_id} className="main-container">
+          <div key={_id} className="card-cart">
             <div>
               <img src={image} alt="loading" className="image" />
             </div>
