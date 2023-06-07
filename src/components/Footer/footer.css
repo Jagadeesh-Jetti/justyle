@@ -1,0 +1,12 @@
+.main-container-footer{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100rem;
+    justify-content: space-around;
+    /* margin-left: 10px; */
+    margin-right: 10px;
+    background-color: rgb(77, 232, 180);
+}
+/* .first-container{
+    width: max-content;
+} */
