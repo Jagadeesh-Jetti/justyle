@@ -10,10 +10,17 @@ export const Filters = () => {
   return (
     <div>
       <div className="filters-header">
-        <h2>Filters</h2>
-        <button onclick={() => filterDispatch({ type: FILTERACTIONS.CLEAR })}>
-          Clear
-        </button>
+        <div>
+          <h2>Filters</h2>
+        </div>
+        <div>
+          <button
+            className="btn-pl"
+            onclick={() => filterDispatch({ type: FILTERACTIONS.CLEAR })}
+          >
+            Clear
+          </button>
+        </div>
       </div>
 
       <CategoryFilter />

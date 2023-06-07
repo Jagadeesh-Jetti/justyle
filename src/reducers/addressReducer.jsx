@@ -1,5 +1,6 @@
 export const addressInitialState = {
   address: [],
+  isAddressPresent: false,
 };
 
 export const addressReducer = (state, action) => {

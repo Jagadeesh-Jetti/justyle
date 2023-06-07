@@ -17,26 +17,28 @@ export const CategoryFilter = () => {
     );
 
   return (
-    <div>
+    <div className="cat-main-container">
       <h3> Categories </h3>
-      {categories &&
-        categories.map((category) => (
-          <div className="categoryCheckbox" key={category}>
-            <label>
-              <input
-                type="checkbox"
-                checked={filterState?.selectedCategory?.includes(category)}
-                onChange={() =>
-                  filterDispatch({
-                    type: FILTERACTIONS.FILTER_BY_CATEGORY,
-                    payload: category,
-                  })
-                }
-              />
-              {category}
-            </label>
-          </div>
-        ))}
+      <div className="categoryCheckbox">
+        {categories &&
+          categories.map((category) => (
+            <div key={category}>
+              <label>
+                <input
+                  type="checkbox"
+                  checked={filterState?.selectedCategory?.includes(category)}
+                  onChange={() =>
+                    filterDispatch({
+                      type: FILTERACTIONS.FILTER_BY_CATEGORY,
+                      payload: category,
+                    })
+                  }
+                />
+                {category}
+              </label>
+            </div>
+          ))}
+      </div>
     </div>
   );
 };

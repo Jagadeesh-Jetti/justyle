@@ -1,9 +1,45 @@
+.cat-main-container{
+    background-color: bisque;
+}
 .categoryCheckbox{
     align-items: left;
+    
 }
-.rating_numbers{
-    display: flex;
-}
+
 .filters-header{
     display: flex;
+    justify-content: space-around;
+    /* background-color: blueviolet; */
+}
+
+
+.rating-container{
+   background-color: bisque;
+   margin-left: 0rem;
+   margin-top: 0rem;
+   width: 12rem;
+
+}
+
+.rating_numbers{
+    display: flex;
+    justify-content: space-between;
+    width: 10rem;
+    margin-left: 0.8rem;
+    margin-top: 0rem;
+    margin-bottom: 0rem;
+}
+.ratingSlider{
+    width: 10rem;
+    margin-left: -0.8rem;
+    margin-left: 0rem;
+    background-color: brown;
+}
+.btn-pl{
+    width: max-content;
+    height: max-content;
+    margin-top: 1.8rem;
+}
+.rating-header-name{
+    margin-bottom: 0rem;
 }

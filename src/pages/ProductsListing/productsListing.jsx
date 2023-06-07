@@ -16,19 +16,27 @@ export const ProductsListing = () => {
   const filterdProducts = FilterFunctions(dataState, filterState);
 
   return (
-    <div className="mainPage">
+    <div className="mainPage-list-container">
       <div>
         <Navbar />
       </div>
 
       <div className="listingBody">
-        <Filters />
-        {filterdProducts.length === 0 ? (
-          <Loader />
-        ) : (
-          <ProductCard products={filterdProducts} />
-        )}
+        <div className="filter-container">
+          <Filters />
+        </div>
+
+        <div className="list-container">
+          {filterdProducts.length === 0 ? (
+            <Loader />
+          ) : (
+            <div>
+              <ProductCard products={filterdProducts} />
+            </div>
+          )}
+        </div>
       </div>
+
       <div className="footer">
         <Footer />
       </div>
