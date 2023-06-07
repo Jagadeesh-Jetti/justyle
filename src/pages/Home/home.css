@@ -40,3 +40,8 @@
     letter-spacing: 2px;
   }
   
+  .footer{
+    margin-top: 4rem;
+    display: flex;
+    flex-wrap: wrap;
+  }
