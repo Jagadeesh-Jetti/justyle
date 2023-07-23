@@ -1,8 +1,27 @@
-.item-pdc{
+.pdc-main-container {
+    border: 1px solid rgb(185, 185, 236);
+    padding: 1rem;
+    margin-bottom: 1rem;
+    display: inline-block; 
+  }
+  
+  
+  .item-pdc {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-}
-.btn-pdc{
+    justify-content: space-between;
+  }
+  
+  .btn-pdc {
     background-color: rgb(216, 132, 7);
-}
+    color: white;
+    margin-top: 1rem;
+  }
+  
+  .btn-pdc:hover {
+    background-color: rgb(195, 118, 6);
+  }
+  
+  .btn-pdc:active {
+    background-color: rgb(167, 101, 5);
+  }
+  

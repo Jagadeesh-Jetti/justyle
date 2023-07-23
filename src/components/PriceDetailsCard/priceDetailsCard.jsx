@@ -9,23 +9,23 @@ export const PriceDetailsCard = ({ products }) => {
   const { totalMRP, totalDiscount, totalFinalPrice } = useContext(cartContext);
 
   return (
-    <div>
+    <div className="pdc-main-container">
       <div>
         <h2> Price Details ({products.length} items)</h2>
 
         <div className="item-pdc">
-          <p>Total MRP </p>
-          <p>{totalMRP}</p>
+          <div>Total MRP </div>
+          <div>{totalMRP}</div>
         </div>
 
         <div className="item-pdc">
-          <p>Discount on MRP</p>
-          <p>{totalDiscount}</p>
+          <div>Discount on MRP</div>
+          <div>{totalDiscount}</div>
         </div>
 
         <div className="item-pdc">
-          <p> Convenience Fee </p>
-          <p>Free</p>
+          <div> Convenience Fee </div>
+          <div>Free</div>
         </div>
 
         <hr />
