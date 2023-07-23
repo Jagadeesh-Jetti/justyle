@@ -1,4 +1,39 @@
-.login{
+.login-page {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+  }
+  
+  .login {
     font-size: large;
-    margin-top: 5rem;
+  }
+  
+  .login-main-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background-color: bisque;
+    border: 1px solid black;
+    width: 35rem;
+  }
+  
+  .login-mail-container,
+  .login-password-container {
+    width: 30rem;
+    height: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .login-email,
+  .login-password {
+    width: 100%;
+    height: 100%;
+  }
+  
+
+.login-footer{
+    position: fixed;
+    bottom: 0;
 }
