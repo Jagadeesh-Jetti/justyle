@@ -2,9 +2,13 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     /* background-color: beige; */
 }
 
+.navbar-links{
+  text-decoration: none;
+}
 .categoryNav{
     display: flex;
     flex-wrap: wrap;

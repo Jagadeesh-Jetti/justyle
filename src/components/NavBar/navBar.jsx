@@ -24,7 +24,7 @@ export const Navbar = () => {
 
   return (
     <div className="navbar">
-      <Link to="/">
+      <Link to="/" className="navbar-links">
         <h3>JustYle</h3>
       </Link>
 
@@ -74,7 +74,7 @@ export const Navbar = () => {
         <h3>Kids</h3>
       </Link> */}
 
-      <Link to="/products">
+      <Link to="/products" className="navbar-links">
         <h3>Products</h3>
       </Link>
 
@@ -93,11 +93,11 @@ export const Navbar = () => {
         />
       </div>
 
-      <Link to="/wishlist">
+      <Link to="/wishlist" className="navbar-links">
         <h3>Wishlist ({dataState.wishlist.length}) </h3>
       </Link>
 
-      <Link to="/cart">
+      <Link to="/cart" className="navbar-links">
         <h3>Cart ({dataState.cart.length}) </h3>
       </Link>
 
@@ -109,11 +109,12 @@ export const Navbar = () => {
             authDispatch({ type: "toggleIsLoggedIN", payload: false });
             navigate("/login");
           }}
+          className="navbar-links"
         >
           <h3>Log out</h3>
         </Link>
       ) : (
-        <Link to="/login">
+        <Link to="/login" className="navbar-links">
           <h3>Login</h3>
         </Link>
       )}
