@@ -13,7 +13,7 @@ export const authContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
   const [authState, authDispatch] = useReducer(AuthReducer, InitialAuthState);
-  // const { dataDispatch } = useContext(dataContext);
+  const { dataDispatch } = useContext(dataContext);
 
   const navigate = useNavigate();
 
@@ -69,11 +69,8 @@ export const AuthContextProvider = ({ children }) => {
         password,
       });
 
-      if (response.status == 200) {
-        localStorage.setItem(
-          "GuestuserToken",
-          JSON.stringify(response.data.encodedToken)
-        );
+      if (response.status === 200) {
+        localStorage.setItem("userToken", response.data.encodedToken);
         authDispatch({ type: "toggleIsLoggedIN", payload: true });
         navigate("/products");
         toast.success("Signed in as Guest,successfully.", {
@@ -93,11 +90,9 @@ export const AuthContextProvider = ({ children }) => {
   const userLogin = async () => {
     try {
       const response = await axios.post("/api/auth/login", userLoginDetails);
-      if (response.status == 200) {
-        localStorage.setItem(
-          "loginToken",
-          JSON.stringify(response.data.encodedToken)
-        );
+      console.log(response.data.encodedToken);
+      if (response.status === 200) {
+        localStorage.setItem("userToken", response.data.encodedToken);
         navigate("/products");
         authDispatch({ type: "toggleIsLoggedIN", payload: true });
         toast.success("Signed in successfully.", {
@@ -117,7 +112,7 @@ export const AuthContextProvider = ({ children }) => {
 
   const logout = () => {
     authDispatch({ type: "toggleIsLoggedIN", payload: false });
-    // dataDispatch({ type: DATAACTIONS.LOGOUT });
+    dataDispatch({ type: DATAACTIONS.LOGOUT });
     localStorage.removeItem("GuestuserToken");
   };
 

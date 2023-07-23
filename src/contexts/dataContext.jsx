@@ -31,7 +31,7 @@ export const DataContextProvider = ({ children }) => {
       }
     };
     fetch();
-  });
+  }, []);
 
   const values = {
     dataState,
