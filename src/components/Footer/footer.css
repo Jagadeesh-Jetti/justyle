@@ -1,12 +1,23 @@
-.main-container-footer{
+.main-container-footer {
     display: flex;
     flex-wrap: wrap;
     width: 100rem;
     justify-content: space-around;
-    /* margin-left: 10px; */
-    margin-right: 10px;
-    background-color: rgb(77, 232, 180);
-}
-/* .first-container{
+    color: aliceblue;
+    background-color: black;
+    
+
+
+  }
+  
+  .first-container {
     width: max-content;
-} */
+    display: inline-block;
+
+}
+  
+  .second-container {
+    display: inline-block;
+
+  }
+  
