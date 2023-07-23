@@ -1,8 +1,54 @@
-.checkout-container{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+.checkout-page {
+  padding: 1rem;
 }
-.address-card{
-    border: 1px solid black;
+
+.checkout-heading {
+  margin-top: 1rem;
+}
+
+.checkout-content-container{
+  display: flex;
+  /* justify-content: space-around; */
+}
+.checkout-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.no-address {
+  text-align: center;
+  margin-left: 15rem;
+  margin-right: 10rem;
+}
+
+.address-container {
+  border: 1px solid #ddd;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.address-card {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.address-card input[type="radio"] {
+  margin-right: 1rem;
+}
+
+.address-name {
+  font-weight: bold;
+  flex-basis: 100%;
+  margin-bottom: 0.5rem;
+}
+
+.address-details {
+  flex-basis: 100%;
+}
+
+.address-details p {
+  margin: 0.25rem 0;
 }
