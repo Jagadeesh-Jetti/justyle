@@ -6,7 +6,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: cover;
-  margin-top: .2rem;
+  margin-top: .7rem;
   height: 610px;
 
 
@@ -38,7 +38,8 @@
   }
 
   .category_img_link{
-    text-decoration: none;
+    text-decoration:'none';
+    
     width: 28%;
     flex-basis: 28%;
   }
