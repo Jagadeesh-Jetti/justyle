@@ -33,9 +33,9 @@ export const ProductCard = ({ products, fromWishlist }) => {
               </Link>
 
               <div className="content">
-                <h4> {title} </h4>
+                <div> {title} </div>
 
-                <p> Rs. {price}</p>
+                <div> Rs. {price}</div>
                 {/* <p> {rating} </p> */}
               </div>
 
