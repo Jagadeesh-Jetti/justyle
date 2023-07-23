@@ -1,5 +1,41 @@
-.item{
+.orderdetails-container {
+    border: 1px solid rgb(185, 185, 236);
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .orderdetails-heading {
+    font-weight: bold;
+    margin-top: 1rem;
+  }
+  
+  .orderProducts {
+    margin-bottom: 1rem;
+  }
+  
+  .item {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-}
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+  }
+  
+  .orderdetails-container .item div {
+    margin-right: 1rem;
+  }
+  
+  .orderdetails-container button {
+    background-color: rgb(216, 132, 7);
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .orderdetails-container button:hover {
+    background-color: rgb(195, 118, 6);
+  }
+  
+  .orderdetails-container button:active {
+    background-color: rgb(167, 101, 5);
+  }
+  

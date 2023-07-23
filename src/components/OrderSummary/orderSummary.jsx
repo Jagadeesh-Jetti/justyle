@@ -14,7 +14,7 @@ export const OrderSummary = () => {
       <div className="orderdetails-heading"> Order Summary </div>
       <div className="orderProducts">
         {dataState.cart.map((product) => (
-          <div>
+          <div className="item">
             <div key={product._id} className="item">
               {product.title} {product.price} X {product.qty}
             </div>
