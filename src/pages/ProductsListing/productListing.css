@@ -1,19 +1,31 @@
-/* .mainPage{
+.mainPage-list-container {
     display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-} */
+    /* flex-wrap: wrap; */
+    flex-direction: column;
+    height: 100%;
+  }
+
 .listingBody{
     display: flex;
     flex-wrap: wrap;
-   
-}
-.footer{
-    margin-top: 4rem;
-    display: flex;
-    flex-wrap: wrap;
-  }
-.filter-container{
-    background-color: bisque;
+    /* flex: 1; */
+    /* background-color: yellow; */
 }
 
+.footer{
+    margin-top: 4rem;
+   
+  }
+.filter-container {
+    background-color: bisque;
+    flex: 0 0 16.5%;
+    flex-wrap: wrap;
+  }
+  
+
+.list-container{
+    width: 100%;
+    display: flex;
+    /* background-color: blue; */
+    flex: 3;
+}

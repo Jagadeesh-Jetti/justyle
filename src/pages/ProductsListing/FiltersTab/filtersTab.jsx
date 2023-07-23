@@ -5,6 +5,7 @@ import "../FiltersTab/filtersTab.css";
 import { useContext } from "react";
 import { filterContext } from "../../../contexts/filterContext";
 import { FILTERACTIONS } from "../../../reducers/Actions/FIlterActions";
+
 export const Filters = () => {
   const { filterDispatch } = useContext(filterContext);
   return (
@@ -16,16 +17,17 @@ export const Filters = () => {
         <div>
           <button
             className="btn-pl"
-            onclick={() => filterDispatch({ type: FILTERACTIONS.CLEAR })}
+            onClick={() => filterDispatch({ type: FILTERACTIONS.CLEAR })}
           >
             Clear
           </button>
         </div>
       </div>
-
-      <CategoryFilter />
-      <PriceFilter />
-      <RatingFilter />
+      <div className="filters-container">
+        <CategoryFilter />
+        <PriceFilter />
+        <RatingFilter />
+      </div>
     </div>
   );
 };

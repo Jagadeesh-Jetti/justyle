@@ -11,12 +11,12 @@ export const PriceFilter = () => {
   ];
 
   return (
-    <div>
+    <div className="price-main-container">
       <h3> Price Filter</h3>
       <div>
         {sorting.map((cur) => (
-          <div>
-            <label key={cur.value}>
+          <div key={cur.value}>
+            <label>
               <input
                 type="radio"
                 value={cur.value}

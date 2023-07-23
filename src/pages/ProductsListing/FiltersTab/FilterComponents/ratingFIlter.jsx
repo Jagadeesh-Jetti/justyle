@@ -6,7 +6,7 @@ import "../filtersTab.css";
 export const RatingFilter = () => {
   const { filterDispatch, filterState } = useContext(filterContext);
   return (
-    <div>
+    <div className="rating-main-container">
       <h3 className="rating-header-name"> Ratings </h3>
       <div className="rating-container">
         <div className="rating_numbers">

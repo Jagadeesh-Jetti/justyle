@@ -1,10 +1,13 @@
 .cat-main-container{
     background-color: bisque;
+    text-align: left;
 }
 .categoryCheckbox{
-    align-items: left;
+    text-align: left;
+   
     
 }
+
 
 .filters-header{
     display: flex;
@@ -12,7 +15,20 @@
     /* background-color: blueviolet; */
 }
 
+.filters-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-left: 2rem;
+  }
+  
+.price-main-container{
+    text-align: left;
+}
 
+.rating-main-container{
+    text-align: left;
+}
 .rating-container{
    background-color: bisque;
    margin-left: 0rem;
