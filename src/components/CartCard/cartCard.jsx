@@ -18,14 +18,14 @@ export const CartCard = ({ products }) => {
         const { _id, image, title, original_price, price, size } = product;
         return (
           <div key={_id} className="card-cart">
-            <div>
-              <img src={image} alt="loading" className="image" />
+            <div className="cart-image-container">
+              <img src={image} alt="loading" className="product-image" />
             </div>
-            <div>
-              <h3> {title} </h3>
-              <p> {price} </p>
-              <p> Quantity: Yoh Jaggu! Need to fix this </p>
-              <p> Size: {size} </p>
+            <div className="cart-details-card">
+              <div> {title} </div>
+              <div> {price} </div>
+              <div> Quantity: Yoh Jaggu! Need to fix this </div>
+              <div> Size: {size} </div>
               <button
                 onClick={() => {
                   isProductInWishlist(_id)
