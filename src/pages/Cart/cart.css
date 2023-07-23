@@ -1,5 +1,37 @@
-.main-container{
+.cart-page {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-}
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  .cart-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .cart-empty {
+    text-align: center;
+  }
+  
+  .main-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+  }
+  
+  .cart-card-container{
+    margin-left: 6rem;
+  }
+  .price-details-container {
+    margin: 10px;
+  
+  }
+  
+  .footer {
+    margin-top: auto;
+  }
+  
