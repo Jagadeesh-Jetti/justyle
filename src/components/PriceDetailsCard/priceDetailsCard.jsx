@@ -15,12 +15,12 @@ export const PriceDetailsCard = ({ products }) => {
 
         <div className="item-pdc">
           <div>Total MRP </div>
-          <div>{totalMRP}</div>
+          <div>₹{totalMRP}</div>
         </div>
 
         <div className="item-pdc">
           <div>Discount on MRP</div>
-          <div>{totalDiscount}</div>
+          <div>₹{totalDiscount}</div>
         </div>
 
         <div className="item-pdc">
@@ -32,7 +32,7 @@ export const PriceDetailsCard = ({ products }) => {
 
         <div className="item-pdc">
           <h3> Total Amount </h3>
-          <h3> {totalFinalPrice} </h3>
+          <h3> ₹{totalFinalPrice} </h3>
         </div>
 
         <Button className="btn-pdc" onClick={() => navigate("/checkout")}>

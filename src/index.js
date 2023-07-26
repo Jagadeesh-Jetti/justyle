@@ -17,8 +17,8 @@ makeServer();
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <AuthContextProvider>
         <DataContextProvider>
+      <AuthContextProvider>
           <FilterContextProvider>
             <CartContextProvider>
               <WishlistContextProvider>
@@ -28,9 +28,22 @@ ReactDOM.render(
               </WishlistContextProvider>
             </CartContextProvider>   
           </FilterContextProvider>
-        </DataContextProvider>   
       </AuthContextProvider> 
+        </DataContextProvider>   
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")
 );
+// import { StrictMode } from "react";
+// import { createRoot } from "react-dom/client";
+
+// import App from "./App";
+
+// const rootElement = document.getElementById("root");
+// const root = createRoot(rootElement);
+
+// root.render(
+//   <StrictMode>
+//     <App />
+//   </StrictMode>
+// );

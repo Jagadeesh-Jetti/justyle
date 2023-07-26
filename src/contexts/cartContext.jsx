@@ -8,7 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 export const cartContext = createContext();
 
 export const CartContextProvider = ({ children }) => {
-  const { dataState } = useContext(dataContext);
+  const { dataState, dataDispatch } = useContext(dataContext);
 
   const addToCartHandler = async (product, dataDispatch) => {
     try {
@@ -54,6 +54,31 @@ export const CartContextProvider = ({ children }) => {
     }
   };
 
+  const updateQuantity = async (type, productId) => {
+    try {
+      const encodedToken = localStorage.getItem("userToken");
+      const response = await axios.post(
+        `/api/user/cart/${productId}`,
+        {
+          action: { type: type },
+        },
+        {
+          headers: { authorization: encodedToken },
+        }
+      );
+      if (response.status === 200) {
+        dataDispatch({
+          type: DATAACTIONS.FETCH_CART,
+          payload: response.data.cart,
+        });
+        toast.success("Quantity updated in the cart");
+      }
+      console.log(response.data.cart);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   const isProductInCart = (productId) => {
     return dataState.cart.find(({ _id }) => _id === productId);
   };
@@ -78,6 +103,7 @@ export const CartContextProvider = ({ children }) => {
   const values = {
     addToCartHandler,
     removeFromCartHandler,
+    updateQuantity,
     isProductInCart,
     totalMRP,
     totalDiscount,

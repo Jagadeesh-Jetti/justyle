@@ -1,118 +1,132 @@
 import React, { useContext, useState } from "react";
-import { Navbar } from "../NavBar/navBar";
 import { addressContext } from "../../contexts/addressContext";
 import { useNavigate } from "react-router-dom";
+import { v4 as uuid } from "uuid";
+import "../Address/address.css";
 
 const AddressForm = () => {
-  const { addressDispatch } = useContext(addressContext);
-  const [name, setName] = useState("");
-  const [street, setStreet] = useState("");
-  const [city, setCity] = useState("");
-  const [state, setState] = useState("");
-  const [mobileNumber, setMobileNumber] = useState("");
+  const { addressDispatch, address, setAddress, setShowAddAddress } =
+    useContext(addressContext);
+
   const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
-
-  const userAddress = {
-    name: name,
-    street: street,
-    city: city,
-    state: state,
-    mobileNumber: mobileNumber,
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Perform authentication/validation checks
-    if (name.trim() === "") {
+    if (address.name.trim() === "") {
       setErrorMessage("Please enter your name.");
       return;
     }
 
-    if (street.trim() === "") {
+    if (address.street.trim() === "") {
       setErrorMessage("Please enter your street address.");
       return;
     }
 
-    if (city.trim() === "") {
+    if (address.city.trim() === "") {
       setErrorMessage("Please enter your city.");
       return;
     }
 
-    if (state.trim() === "") {
+    if (address.state.trim() === "") {
       setErrorMessage("Please enter your state.");
       return;
     }
 
-    if (mobileNumber.trim() === "") {
+    if (address.mobileNumber.trim() === "") {
       setErrorMessage("Please enter your mobile number.");
       return;
     }
 
-    if (!/^\d{10}$/.test(mobileNumber.trim())) {
+    if (!/^\d{10}$/.test(address.mobileNumber.trim())) {
       setErrorMessage("Please enter a valid 10-digit mobile number.");
       return;
     }
 
-    // If all validations pass, proceed with form submission/authentication
     setErrorMessage("");
-    addressDispatch({ type: "STORE_ADDRESS", payload: userAddress });
+    addressDispatch({ type: "STORE_ADDRESS", payload: address });
     navigate("/checkout");
+    setAddress({
+      id: "",
+      name: "",
+      street: "",
+      city: "",
+      state: "",
+      mobileNumber: "",
+    });
+    setShowAddAddress(false);
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setAddress((prevState) => ({
+      ...prevState,
+      id: uuid(),
+      [name]: value,
+    }));
   };
 
   return (
-    <div>
-      <Navbar />
+    <div className="add-address-form-container">
+      <h2>Add Address</h2>
       <div>
         <form onSubmit={handleSubmit}>
           <div>
-            <label htmlFor="name">Name:</label>
             <input
               type="text"
               id="name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
+              name="name"
+              value={address.name}
+              onChange={handleChange}
+              placeholder="Name"
             />
           </div>
           <div>
-            <label htmlFor="street">Street Address:</label>
             <input
               type="text"
               id="street"
-              value={street}
-              onChange={(e) => setStreet(e.target.value)}
+              name="street"
+              value={address.street}
+              onChange={handleChange}
+              placeholder="Street Address"
             />
           </div>
           <div>
-            <label htmlFor="city">City:</label>
             <input
               type="text"
               id="city"
-              value={city}
-              onChange={(e) => setCity(e.target.value)}
+              name="city"
+              value={address.city}
+              onChange={handleChange}
+              placeholder="City"
             />
           </div>
           <div>
-            <label htmlFor="state">State:</label>
             <input
               type="text"
               id="state"
-              value={state}
-              onChange={(e) => setState(e.target.value)}
+              name="state"
+              value={address.state}
+              onChange={handleChange}
+              placeholder="State"
             />
           </div>
           <div>
-            <label htmlFor="mobileNumber">Mobile Number:</label>
             <input
               type="text"
               id="mobileNumber"
-              value={mobileNumber}
-              onChange={(e) => setMobileNumber(e.target.value)}
+              name="mobileNumber"
+              value={address.mobileNumber}
+              onChange={handleChange}
+              placeholder="Mobile Number"
             />
           </div>
           {errorMessage && <p>{errorMessage}</p>}
-          <button type="submit">Submit</button>
+          <div className="buttons-modal">
+            <button type="submit">Submit</button>
+            <button onClick={() => setShowAddAddress(false)}> Close </button>
+          </div>
         </form>
       </div>
     </div>

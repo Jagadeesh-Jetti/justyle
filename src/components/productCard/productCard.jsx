@@ -33,37 +33,53 @@ export const ProductCard = ({ products, fromWishlist }) => {
               </Link>
 
               <div className="content">
-                <div> {title} </div>
+                <div className="title"> {title} </div>
 
                 <div> Rs. {price}</div>
                 {/* <p> {rating} </p> */}
               </div>
 
-              {fromWishlist ? (
+              <div className="buttons-container">
+                {fromWishlist ? (
+                  <button
+                    className="btn"
+                    onClick={() => {
+                      authState.isLoggedIn
+                        ? removeFromWishlistHandler(_id, dataDispatch)
+                        : navigate("/login");
+                    }}
+                  >
+                    Remove from wishlist
+                  </button>
+                ) : (
+                  <button
+                    className="btn"
+                    onClick={() => {
+                      authState.isLoggedIn
+                        ? isProductInWishlist(_id)
+                          ? navigate("/cart")
+                          : addToWishlistHandler(product, dataDispatch)
+                        : navigate("/login");
+                    }}
+                  >
+                    {isProductInWishlist(_id)
+                      ? "Go to Wishlist"
+                      : "Add to Wishlist"}
+                  </button>
+                )}
                 <button
+                  className="btn"
                   onClick={() => {
                     authState.isLoggedIn
-                      ? removeFromWishlistHandler(_id, dataDispatch)
-                      : navigate("/login");
-                  }}
-                >
-                  Remove from wishlist
-                </button>
-              ) : (
-                <button
-                  onClick={() => {
-                    authState.isLoggedIn
-                      ? isProductInWishlist(_id)
+                      ? isProductInCart(_id)
                         ? navigate("/cart")
-                        : addToWishlistHandler(product, dataDispatch)
+                        : addToCartHandler(product, dataDispatch)
                       : navigate("/login");
                   }}
                 >
-                  {isProductInWishlist(_id)
-                    ? "Go to Wishlist"
-                    : "Add to Wishlist"}
+                  {isProductInCart(_id) ? "Go to Cart" : "Add to Cart"}
                 </button>
-              )}
+              </div>
 
               {/* {isProductInCart(_id) ? (
                 <button>Go to cart</button>
@@ -72,18 +88,6 @@ export const ProductCard = ({ products, fromWishlist }) => {
                   Add to cart
                 </button>
               )} */}
-
-              <button
-                onClick={() => {
-                  authState.isLoggedIn
-                    ? isProductInCart(_id)
-                      ? navigate("/cart")
-                      : addToCartHandler(product, dataDispatch)
-                    : navigate("/login");
-                }}
-              >
-                {isProductInCart(_id) ? "Go to Cart" : "Add to Cart"}
-              </button>
             </div>
           );
         })}

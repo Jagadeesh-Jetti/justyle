@@ -44,7 +44,8 @@ export const AuthContextProvider = ({ children }) => {
       const {
         data: { encodedToken },
       } = await axios.post("/api/auth/signup", userDetails);
-      localStorage.setItem("signupToken", JSON.stringify(encodedToken));
+      console.log(encodedToken);
+      localStorage.setItem("userToken", encodedToken);
       navigate("/login");
       toast.success("Signed up,successfully.", {
         style: {
@@ -72,6 +73,11 @@ export const AuthContextProvider = ({ children }) => {
       if (response.status === 200) {
         localStorage.setItem("userToken", response.data.encodedToken);
         authDispatch({ type: "toggleIsLoggedIN", payload: true });
+
+        localStorage.setItem(
+          "userDetails",
+          JSON.stringify(response.data.foundUser)
+        );
         navigate("/products");
         toast.success("Signed in as Guest,successfully.", {
           style: {
@@ -90,11 +96,13 @@ export const AuthContextProvider = ({ children }) => {
   const userLogin = async () => {
     try {
       const response = await axios.post("/api/auth/login", userLoginDetails);
-      console.log(response.data.encodedToken);
+      console.log(userLoginDetails);
       if (response.status === 200) {
+        console.log(response);
         localStorage.setItem("userToken", response.data.encodedToken);
-        navigate("/products");
+
         authDispatch({ type: "toggleIsLoggedIN", payload: true });
+        navigate("/products");
         toast.success("Signed in successfully.", {
           style: {
             fontSize: "large",
@@ -103,7 +111,6 @@ export const AuthContextProvider = ({ children }) => {
             color: "whitesmoke",
           },
         });
-        console.log(userDetails);
       }
     } catch (error) {
       console.log(error);
@@ -113,7 +120,7 @@ export const AuthContextProvider = ({ children }) => {
   const logout = () => {
     authDispatch({ type: "toggleIsLoggedIN", payload: false });
     dataDispatch({ type: DATAACTIONS.LOGOUT });
-    localStorage.removeItem("GuestuserToken");
+    localStorage.removeItem("userToken");
   };
 
   const values = {

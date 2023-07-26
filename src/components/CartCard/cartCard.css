@@ -27,12 +27,53 @@
     width: 40rem;
     height: 11rem;
     margin: 0.5rem;
+    /* background-color: aliceblue; */
   }
   
   .cart-details-card {
-    flex: 0.5;
     text-align: left;
     justify-content: left;
+    /* background-color: beige; */
+    height: 9rem;
+    width: 90%;
+    padding-top: 0rem;
+    
+  }
+
+  .cdc-title{
+    font-size: large;
+    font-weight: bold;
   }
   
-  
+  .cdc-quantity{
+    display: flex;
+  }
+
+  .cdc-desc{
+    font-size: 90%;
+  }
+
+  .cdc-price{
+    font-size: 90%;
+    font-weight: bold;
+  }
+
+  .cdc-size{
+    font-size: small;
+    font-weight: 600;
+
+  }
+  .cdc-qty-button{
+    padding: 7px;
+    background: none;
+    border: none;
+    font-size: medium;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.12);
+  }
+
+  .quantity {
+    padding: 5px;
+    margin: 5px;
+    border-radius: 5px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.12);
+  }

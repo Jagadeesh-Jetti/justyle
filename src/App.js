@@ -11,6 +11,8 @@ import { RequireAuth } from "./services/RequireAuth";
 import { Checkout } from "./pages/Checkout/checkout";
 import { OrderConfirmation } from "./pages/OrderConfirmation/orderConfirmation";
 import AddressForm from "./components/Address/address";
+import { EditAddress } from "./components/modals/EditAddress/EditAddress";
+import { Profile } from "./pages/Profile/Profile";
 
 
 function App() {
@@ -37,6 +39,8 @@ function App() {
         <Route path="/oc" element={<OrderConfirmation />} />
         <Route path="/address" element={<AddressForm />} />
         <Route path="/product/:productId" element={<ProductDetail />} />
+
+          <Route path="/profile" element={<Profile />}/>
 
         
       </Routes>

@@ -6,13 +6,8 @@ import { authContext } from "../../contexts/authContext";
 import { Footer } from "../../components/Footer/footer";
 
 export const Login = () => {
-  const {
-    guestLogin,
-    userLogin,
-    userLoginDetails,
-    setUserLoginDetails,
-    logout,
-  } = useContext(authContext);
+  const { guestLogin, userLogin, userLoginDetails, setUserLoginDetails } =
+    useContext(authContext);
 
   return (
     <div>

@@ -1,0 +1,25 @@
+.profile-image{
+    width: 6rem;
+    height: 6rem;
+}
+
+.profile-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10rem;
+}
+
+.logout-btn{
+    font-size: large;
+    background-color: beige;
+    padding: 0.5rem;
+    margin: 1rem;
+    
+}
+
+.logout-btn:hover{
+    border: 1px solid;
+    cursor: pointer;
+}

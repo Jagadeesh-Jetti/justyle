@@ -47,3 +47,21 @@
     margin-left: 0.5rem;
 } 
 
+.title{
+  font-size: medium;
+  font-weight: bold;
+}
+
+.buttons-container{
+  position: absolute;
+  bottom: 0%;
+  background-color: aqua;
+  width: 100%;
+}
+
+.btn{
+  height: 1.5rem;
+  width: 50%;
+ 
+  /* background-color: beige; */
+}

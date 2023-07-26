@@ -1,16 +1,29 @@
-.orderdetails-container {
+.ordersummary-container {
     border: 1px solid rgb(185, 185, 236);
     padding: 1rem;
     margin-bottom: 1rem;
+    width: 20rem;
+    text-align: left;
   }
   
+  .orderdetails-container{
+    /* border: 1px solid rgb(185, 185, 236); */
+    /* padding: 1rem; */
+    text-align: left;
+    margin: 1rem;
+  }
+
   .orderdetails-heading {
     font-weight: bold;
     margin-top: 1rem;
   }
   
   .orderProducts {
-    margin-bottom: 1rem;
+    /* border: 1px solid rgb(185, 185, 236); */
+    /* padding: 1rem; */
+    text-align: left;
+    margin: 1rem;
+    
   }
   
   .item {

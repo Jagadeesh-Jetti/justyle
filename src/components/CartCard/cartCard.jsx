@@ -8,24 +8,55 @@ import { dataContext } from "../../contexts/dataContext";
 export const CartCard = ({ products }) => {
   const { isProductInWishlist, addToWishlistHandler } =
     useContext(wishlistContext);
-  const { removeFromCartHandler } = useContext(cartContext);
+  const { removeFromCartHandler, updateQuantity } = useContext(cartContext);
   const { dataDispatch } = useContext(dataContext);
   const navigate = useNavigate();
 
   return (
     <div className="main-container-cart">
       {products.map((product) => {
-        const { _id, image, title, original_price, price, size } = product;
+        const {
+          _id,
+          image,
+          title,
+          description,
+          original_price,
+          price,
+          size,
+          qty,
+        } = product;
         return (
           <div key={_id} className="card-cart">
             <div className="cart-image-container">
               <img src={image} alt="loading" className="product-image" />
             </div>
             <div className="cart-details-card">
-              <div> {title} </div>
-              <div> {price} </div>
-              <div> Quantity: Yoh Jaggu! Need to fix this </div>
-              <div> Size: {size} </div>
+              <div className="cdc-title"> {title} </div>
+              <div className="cdc-desc"> {description} </div>
+              <div className="cdc-size"> Size: {size} </div>
+              <div className="cdc-price"> ₹{price} </div>
+              <button
+                className="cdc-qty-button"
+                onClick={() => {
+                  if (qty > 1) {
+                    updateQuantity("decrement", _id);
+                  }
+                }}
+              >
+                -
+              </button>
+              <span className="quantity"> {qty} </span>
+              <button
+                className="cdc-qty-button"
+                onClick={() => {
+                  if (qty >= 0) {
+                    updateQuantity("increment", _id);
+                  }
+                }}
+              >
+                +
+              </button>
+              <div></div>
               <button
                 onClick={() => {
                   isProductInWishlist(_id)

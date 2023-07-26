@@ -10,7 +10,7 @@ export const categories = [
     _id: uuid(),
     categoryName: "Men",
     description: "",
-    thumbnail : "https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_500,h_500/global/539023/08/mod01/fnd/IND/fmt/png/BMW-M-Motorsport-Statement-All-Over-Print-Men's-T-Shirt",
+    thumbnail : "https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_1350,h_1350/global/539806/06/mod01/fnd/IND/fmt/png/PUMA-x-DAPPER-DAN-Men's-Hoodie",
   },
   {
     _id: uuid(),
