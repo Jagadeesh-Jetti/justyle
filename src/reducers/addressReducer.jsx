@@ -44,10 +44,16 @@ export const addressReducer = (state, action) => {
       const updatedAddress = state.address.map((address) =>
         address.id === action.payload.id ? action.payload : address
       );
+      const selectedAddressUpdated =
+        state.selectedAddress.id === action.payload.id
+          ? action.payload
+          : state.selectedAddress;
+
       return {
         ...state,
         address: updatedAddress,
         editAddress: {},
+        selectedAddress: selectedAddressUpdated,
       };
     }
     default: {
