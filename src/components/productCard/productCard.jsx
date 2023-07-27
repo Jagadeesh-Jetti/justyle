@@ -7,7 +7,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { authContext } from "../../contexts/authContext";
 
 export const ProductCard = ({ products, fromWishlist }) => {
-  const { addToCartHandler, isProductInCart } = useContext(cartContext);
+  const { addToCartHandler, isProductInCart, updateQuantity } =
+    useContext(cartContext);
   const { authState } = useContext(authContext);
 
   const {
@@ -34,7 +35,6 @@ export const ProductCard = ({ products, fromWishlist }) => {
 
               <div className="content">
                 <div className="title"> {title} </div>
-
                 <div> Rs. {price}</div>
                 {/* <p> {rating} </p> */}
               </div>
@@ -49,7 +49,7 @@ export const ProductCard = ({ products, fromWishlist }) => {
                         : navigate("/login");
                     }}
                   >
-                    Remove from wishlist
+                    Remove
                   </button>
                 ) : (
                   <button
@@ -57,7 +57,7 @@ export const ProductCard = ({ products, fromWishlist }) => {
                     onClick={() => {
                       authState.isLoggedIn
                         ? isProductInWishlist(_id)
-                          ? navigate("/cart")
+                          ? navigate("/wishlist")
                           : addToWishlistHandler(product, dataDispatch)
                         : navigate("/login");
                     }}
@@ -67,17 +67,18 @@ export const ProductCard = ({ products, fromWishlist }) => {
                       : "Add to Wishlist"}
                   </button>
                 )}
+
                 <button
                   className="btn"
                   onClick={() => {
                     authState.isLoggedIn
                       ? isProductInCart(_id)
-                        ? navigate("/cart")
+                        ? updateQuantity("increment", _id)
                         : addToCartHandler(product, dataDispatch)
                       : navigate("/login");
                   }}
                 >
-                  {isProductInCart(_id) ? "Go to Cart" : "Add to Cart"}
+                  {isProductInCart(_id) ? "Add quantity" : "Add to Cart"}
                 </button>
               </div>
 
