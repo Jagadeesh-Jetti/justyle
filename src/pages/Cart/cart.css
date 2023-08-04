@@ -10,6 +10,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 0.7rem;;
   }
   
   .cart-empty {
@@ -20,12 +21,13 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    margin-bottom: 20px;
+    margin-bottom: 20rem;
   }
   
   .cart-card-container{
     margin-left: 6rem;
   }
+  
   .price-details-container {
     margin: 10px;
   
