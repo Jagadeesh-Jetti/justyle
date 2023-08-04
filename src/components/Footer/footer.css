@@ -3,11 +3,8 @@
     flex-wrap: wrap;
     width: 100rem;
     justify-content: space-around;
-    color: aliceblue;
-    background-color: black;
-    
-
-
+    color: rgb(21, 21, 22);
+    background-color: rgb(246, 244, 244);
   }
   
   .first-container {
