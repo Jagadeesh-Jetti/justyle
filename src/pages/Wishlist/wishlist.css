@@ -8,9 +8,21 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  /* margin-top: 2rem; */
+  min-height: 100vh;
+}
+
+.wishlist-main-container{
+  margin-bottom: 10rem;
+}
+.wishlist-header{
+  display: flex;
+  margin: 2rem;
+}
+
+.wishlist-text-header{
+  font-size: large;
+  font-weight: bold;
+  margin-right: 0.5rem;
 }
 
 .wishlist-empty {

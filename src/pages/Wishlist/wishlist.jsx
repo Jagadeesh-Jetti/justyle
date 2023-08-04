@@ -23,8 +23,14 @@ export const Wishlist = () => {
             </Button>
           </div>
         ) : (
-          <div className="wishlist-container">
-            <ProductCard fromWishlist={true} products={dataState?.wishlist} />
+          <div className="wishlist-main-container">
+            <div className="wishlist-header">
+              <div className="wishlist-text-header"> My Wishlist</div>
+              <div>{dataState.wishlist.length} items</div>
+            </div>
+            <div className="wishlist-container">
+              <ProductCard fromWishlist={true} products={dataState?.wishlist} />
+            </div>
           </div>
         )}
       </div>
