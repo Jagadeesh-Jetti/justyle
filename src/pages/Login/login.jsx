@@ -1,13 +1,38 @@
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import "../Login/login.css";
 import { Navbar } from "../../components/NavBar/navBar";
-import { useContext } from "react";
 import { authContext } from "../../contexts/authContext";
 import { Footer } from "../../components/Footer/footer";
 
 export const Login = () => {
-  const { guestLogin, userLogin, userLoginDetails, setUserLoginDetails } =
-    useContext(authContext);
+  const { loginHandler } = useContext(authContext);
+
+  const [userLoginDetails, setUserLoginDetails] = useState({
+    email: "",
+    password: "",
+  });
+
+  const handleLogIn = (e) => {
+    e.preventDefault();
+    if (
+      userLoginDetails.email.trim() === "" ||
+      userLoginDetails.password.trim() === ""
+    ) {
+      // Handle the case when fields are empty
+      console.log("Fields are empty");
+    } else {
+      loginHandler(userLoginDetails);
+    }
+  };
+
+  const handleGuest = () => {
+    const guestCredentials = {
+      email: "adarshbalika@gmail.com",
+      password: "adarshbalika",
+    };
+    loginHandler(guestCredentials);
+  };
 
   return (
     <div>
@@ -18,12 +43,12 @@ export const Login = () => {
           <h2> Login </h2>
           <form className="login-form">
             <div className="login-mail-container">
-              <label htmlFor="email"></label>
               <input
                 type="text"
                 id="email"
                 placeholder="Email"
                 className="login-email"
+                value={userLoginDetails.email}
                 onChange={(e) =>
                   setUserLoginDetails({
                     ...userLoginDetails,
@@ -33,12 +58,12 @@ export const Login = () => {
               />
             </div>
             <div className="login-password-container">
-              <label htmlFor="password"></label>
               <input
                 type="password"
                 id="password"
                 placeholder="Password"
                 className="login-password"
+                value={userLoginDetails.password}
                 onChange={(e) =>
                   setUserLoginDetails({
                     ...userLoginDetails,
@@ -47,12 +72,9 @@ export const Login = () => {
                 }
               />
             </div>
-            <button onClick={() => userLogin()}>Login</button>
+            <button onClick={handleLogIn}>Login</button>
           </form>
-
-          <button onClick={() => guestLogin()}> Guest Login </button>
-
-          {/* <button onClick={() => logout()}> Log out </button> */}
+          <button onClick={handleGuest}>Guest Login</button>
           <h3>
             Don't have an account? <Link to="/signup">Sign up</Link>
           </h3>
