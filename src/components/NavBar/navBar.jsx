@@ -8,7 +8,7 @@ import { dataContext } from "../../contexts/dataContext";
 import { authContext } from "../../contexts/authContext";
 import { filterContext } from "../../contexts/filterContext";
 import { FILTERACTIONS } from "../../reducers/Actions/FIlterActions";
-import { DATAACTIONS } from "../../reducers/Actions/DataActions";
+// import { DATAACTIONS } from "../../reducers/Actions/DataActions";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import {
 //   faHeart,
@@ -16,9 +16,9 @@ import { DATAACTIONS } from "../../reducers/Actions/DataActions";
 //   // faUser,
 // } from "@fortawesome/free-solid-svg-icons";
 export const Navbar = () => {
-  const { dataState, dataDispatch } = useContext(dataContext);
+  const { dataState } = useContext(dataContext);
   const { filterDispatch, filterState } = useContext(filterContext);
-  const { authState, authDispatch } = useContext(authContext);
+  const { authState, logout } = useContext(authContext);
   const navigate = useNavigate();
 
   return (
@@ -61,15 +61,7 @@ export const Navbar = () => {
       </Link>
 
       {authState?.isLoggedIn ? (
-        <Link
-          onClick={() => {
-            dataDispatch({ type: DATAACTIONS.LOGOUT });
-            localStorage.removeItem("GuestuserToken");
-            authDispatch({ type: "toggleIsLoggedIN", payload: false });
-            navigate("/login");
-          }}
-          className="navbar-links"
-        >
+        <Link onClick={logout} className="navbar-links">
           <h3>Log out</h3>
         </Link>
       ) : (
