@@ -16,10 +16,13 @@ export const Checkout = () => {
     setShowEditAddress,
     showAddAddress,
     setShowAddAddress,
+    setIsAddressSelected,
+    isAddressSelected,
   } = useContext(addressContext);
   const navigate = useNavigate();
 
   console.log(addressState.selectedAddress);
+
   return (
     <div className="checkout-page">
       <Navbar />
@@ -42,9 +45,6 @@ export const Checkout = () => {
               <div className="no-address">
                 <h2>Select Address</h2>
                 <h3>No address available</h3>
-                {/* <Button onClick={() => navigate("/address")}>
-                  Add Address
-                </Button> */}
               </div>
             ) : (
               <div className="address-container">
@@ -54,12 +54,26 @@ export const Checkout = () => {
                       <input
                         type="radio"
                         name="address"
-                        onClick={() =>
-                          addressDispatch({
-                            type: "SELECT_ADDRESS",
-                            payload: address.id,
-                          })
+                        checked={
+                          isAddressSelected &&
+                          addressState.selectedAddress.id === address.id
                         }
+                        onClick={() => {
+                          if (addressState.address.length === 1) {
+                            setIsAddressSelected(true);
+                            addressDispatch({
+                              type: "SELECT_ADDRESS",
+                              payload: address.id,
+                            });
+                          } else if (addressState.address.length === 0) {
+                            setIsAddressSelected(false);
+                          } else {
+                            addressDispatch({
+                              type: "SELECT_ADDRESS",
+                              payload: address.id,
+                            });
+                          }
+                        }}
                       />
                     </div>
 
