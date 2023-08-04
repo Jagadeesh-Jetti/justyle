@@ -31,7 +31,7 @@ export const ProductsListing = () => {
             <Loader />
           ) : (
             <div>
-              <ProductCard products={filterdProducts} />
+              <ProductCard fromListing={true} products={filterdProducts} />
             </div>
           )}
         </div>
