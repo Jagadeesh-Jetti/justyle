@@ -4,11 +4,13 @@ import "../OrderSummary/orderSummary.css";
 import { useNavigate } from "react-router-dom";
 import { cartContext } from "../../contexts/cartContext";
 import { addressContext } from "../../contexts/addressContext";
+import { DATAACTIONS } from "../../reducers/Actions/DataActions";
 
 export const OrderSummary = () => {
-  const { dataState } = useContext(dataContext);
-  const { addressState } = useContext(addressContext);
-  const { totalMRP, totalDiscount, totalFinalPrice } = useContext(cartContext);
+  const { dataState, dataDispatch } = useContext(dataContext);
+  const { addressState, isAddressSelected } = useContext(addressContext);
+  const { totalMRP, totalDiscount, totalFinalPrice, clearCart } =
+    useContext(cartContext);
   const navigate = useNavigate();
 
   return (
@@ -55,7 +57,18 @@ export const OrderSummary = () => {
         </div>
       ) : null}
 
-      <button onClick={() => navigate("/oc")}>Place order</button>
+      {isAddressSelected ? (
+        <button
+          onClick={() => {
+            navigate("/oc");
+            dataDispatch({ type: DATAACTIONS.FETCH_CART, payload: [] });
+          }}
+        >
+          Place order
+        </button>
+      ) : (
+        <button>Select address to place order</button>
+      )}
     </div>
   );
 };
