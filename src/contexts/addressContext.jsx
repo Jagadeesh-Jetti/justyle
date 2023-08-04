@@ -10,6 +10,7 @@ export const addressContext = createContext();
 export const AddressContextProvider = ({ children }) => {
   const [showAddAddress, setShowAddAddress] = useState(false);
   const [showEditAddress, setShowEditAddress] = useState(false);
+  const [isAddressSelected, setIsAddressSelected] = useState(false);
   const [addressState, addressDispatch] = useReducer(
     addressReducer,
     addressInitialState
@@ -33,6 +34,8 @@ export const AddressContextProvider = ({ children }) => {
     setShowEditAddress,
     showAddAddress,
     setShowAddAddress,
+    isAddressSelected,
+    setIsAddressSelected,
   };
 
   return (
