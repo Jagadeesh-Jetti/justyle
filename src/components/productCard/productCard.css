@@ -43,12 +43,24 @@
   object-fit: cover;
 }
 
+.pcard-price-div{
+  display: flex;
+}
+
+.price-div{
+  margin-right: 0.5rem;
+}
+
+.og-price{
+  text-decoration: line-through;
+  margin-right: 0.5rem;
+}
 .content{
     margin-left: 0.5rem;
 } 
 
 .title{
-  font-size: medium;
+  font-size: large;
   font-weight: bold;
 }
 

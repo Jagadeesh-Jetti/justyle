@@ -6,7 +6,7 @@ import { wishlistContext } from "../../contexts/wishlistContext";
 import { Link, useNavigate } from "react-router-dom";
 import { authContext } from "../../contexts/authContext";
 
-export const ProductCard = ({ products, fromWishlist }) => {
+export const ProductCard = ({ products, fromWishlist, fromListing }) => {
   const { addToCartHandler, isProductInCart, updateQuantity } =
     useContext(cartContext);
   const { authState } = useContext(authContext);
@@ -25,6 +25,8 @@ export const ProductCard = ({ products, fromWishlist }) => {
         products.map((product) => {
           const { _id, image, title, original_price, price, size, rating } =
             product;
+
+          const discount = Math.round((price / original_price) * 100);
           return (
             <div key={_id} className="productCard">
               <Link to={`/product/${_id}`}>
@@ -35,7 +37,15 @@ export const ProductCard = ({ products, fromWishlist }) => {
 
               <div className="content">
                 <div className="title"> {title} </div>
-                <div> Rs. {price}</div>
+
+                <div className="pcard-price-div">
+                  <div className="price-div">
+                    Rs.
+                    {price}
+                  </div>
+                  <div className="og-price"> Rs.{original_price} </div>
+                  <div> ({discount}%) </div>
+                </div>
                 {/* <p> {rating} </p> */}
               </div>
 
@@ -68,27 +78,34 @@ export const ProductCard = ({ products, fromWishlist }) => {
                   </button>
                 )}
 
-                <button
-                  className="btn"
-                  onClick={() => {
-                    authState.isLoggedIn
-                      ? isProductInCart(_id)
-                        ? updateQuantity("increment", _id)
-                        : addToCartHandler(product, dataDispatch)
-                      : navigate("/login");
-                  }}
-                >
-                  {isProductInCart(_id) ? "Add quantity" : "Add to Cart"}
-                </button>
+                {fromListing ? (
+                  <button
+                    className="btn"
+                    onClick={() => {
+                      authState.isLoggedIn
+                        ? isProductInCart(_id)
+                          ? navigate("/cart")
+                          : addToCartHandler(product, dataDispatch)
+                        : navigate("/login");
+                    }}
+                  >
+                    {isProductInCart(_id) ? "Go to Cart" : "Add to Cart"}
+                  </button>
+                ) : (
+                  <button
+                    className="btn"
+                    onClick={() => {
+                      authState.isLoggedIn
+                        ? isProductInCart(_id)
+                          ? updateQuantity("increment", _id)
+                          : addToCartHandler(product, dataDispatch)
+                        : navigate("/login");
+                    }}
+                  >
+                    {isProductInCart(_id) ? "Add quantity" : "Add to Cart"}
+                  </button>
+                )}
               </div>
-
-              {/* {isProductInCart(_id) ? (
-                <button>Go to cart</button>
-              ) : (
-                <button onClick={() => addToCartHandler(product, dataDispatch)}>
-                  Add to cart
-                </button>
-              )} */}
             </div>
           );
         })}
