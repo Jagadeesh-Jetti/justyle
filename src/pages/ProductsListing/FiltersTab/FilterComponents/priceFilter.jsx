@@ -12,7 +12,7 @@ export const PriceFilter = () => {
 
   return (
     <div className="price-main-container">
-      <h3> Price Filter</h3>
+      <h5> PRICE </h5>
       <div>
         {sorting.map((cur) => (
           <div key={cur.value}>
@@ -21,6 +21,7 @@ export const PriceFilter = () => {
                 type="radio"
                 value={cur.value}
                 name="price"
+                className="price-input"
                 checked={filterState.selectedPriceSort === cur.value}
                 onChange={(e) =>
                   filterDispatch({
