@@ -8,13 +8,13 @@ import { dataContext } from "../../contexts/dataContext";
 import { authContext } from "../../contexts/authContext";
 import { filterContext } from "../../contexts/filterContext";
 import { FILTERACTIONS } from "../../reducers/Actions/FIlterActions";
-// import { DATAACTIONS } from "../../reducers/Actions/DataActions";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import {
-//   faHeart,
-//   // faCartShopping,
-//   // faUser,
-// } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faHeart,
+  faCartShopping,
+  faUser,
+} from "@fortawesome/free-solid-svg-icons";
+
 export const Navbar = () => {
   const { dataState } = useContext(dataContext);
   const { filterDispatch, filterState } = useContext(filterContext);
@@ -47,20 +47,28 @@ export const Navbar = () => {
         />
       </div>
 
+      <Link to="/profile" className="navbar-links">
+        <div>
+          <FontAwesomeIcon icon={faUser} className="no-rotate-icon" />
+        </div>
+        <div className="icon-name">Profile</div>
+      </Link>
+
       <Link to="/wishlist" className="navbar-links">
-        {/* <FontAwesomeIcon icon={faHeart} /> */}
-        <h3>Wishlist ({dataState.wishlist.length}) </h3>
+        <div>
+          <FontAwesomeIcon icon={faHeart} className="no-rotate-icon" />
+        </div>
+        <div className="icon-name">Wishlist</div>
       </Link>
 
       <Link to="/cart" className="navbar-links">
-        <h3>Cart ({dataState.cart.length}) </h3>
+        <div>
+          <FontAwesomeIcon icon={faCartShopping} className="no-rotate-icon" />
+        </div>
+        <div className="icon-name">Cart</div>
       </Link>
 
-      <Link to="/profile" className="navbar-links">
-        <h3>Profile </h3>
-      </Link>
-
-      {authState?.isLoggedIn ? (
+      {/* {authState?.isLoggedIn ? (
         <Link onClick={logout} className="navbar-links">
           <h3>Log out</h3>
         </Link>
@@ -68,7 +76,7 @@ export const Navbar = () => {
         <Link to="/login" className="navbar-links">
           <h3>Login</h3>
         </Link>
-      )}
+      )} */}
     </div>
   );
 };
