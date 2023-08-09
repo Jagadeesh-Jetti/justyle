@@ -7,7 +7,7 @@ export const RatingFilter = () => {
   const { filterDispatch, filterState } = useContext(filterContext);
   return (
     <div className="rating-main-container">
-      <h3 className="rating-header-name"> Ratings </h3>
+      <h5 className="rating-header-name"> RATINGS </h5>
       <div className="rating-container">
         <div className="rating_numbers">
           <p> 1 </p>
