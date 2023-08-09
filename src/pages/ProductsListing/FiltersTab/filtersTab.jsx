@@ -12,7 +12,7 @@ export const Filters = () => {
     <div>
       <div className="filters-header">
         <div>
-          <h2>Filters</h2>
+          <h4>FILTERS</h4>
         </div>
         <div>
           <button
