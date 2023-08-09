@@ -18,7 +18,7 @@ export const CategoryFilter = () => {
 
   return (
     <div className="cat-main-container">
-      <h3> Categories </h3>
+      <h5> CATEGORIES </h5>
       <div className="categoryCheckbox">
         {categories &&
           categories.map((category) => (
@@ -26,6 +26,7 @@ export const CategoryFilter = () => {
               <label>
                 <input
                   type="checkbox"
+                  className="category-input-checkbox"
                   checked={filterState?.selectedCategory?.includes(category)}
                   onChange={() =>
                     filterDispatch({
