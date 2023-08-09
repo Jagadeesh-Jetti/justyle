@@ -1,12 +1,9 @@
-import React, { createContext, useContext, useReducer, useState } from "react";
+import React, { createContext, useContext, useReducer } from "react";
 import { AuthReducer, InitialAuthState } from "../reducers/authReducer";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-
-import "react-toastify/dist/ReactToastify.css";
-// import { dataContext } from "./dataContext";
 import { DATAACTIONS } from "../reducers/Actions/DataActions";
+import { loginCall, signupCall } from "../services/AuthenticationCalls";
 import { dataContext } from "./dataContext";
 
 export const authContext = createContext();
@@ -14,40 +11,14 @@ export const authContext = createContext();
 export const AuthContextProvider = ({ children }) => {
   const [authState, authDispatch] = useReducer(AuthReducer, InitialAuthState);
   const { dataDispatch } = useContext(dataContext);
-
   const navigate = useNavigate();
 
-  // const encodedToken = localStorage.getItem("userToken");
-
-  // console.log(encodedToken);
-
-  const [userDetails, setUserDetails] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
-  });
-
-  const [userLoginDetails, setUserLoginDetails] = useState({
-    email: "",
-    password: "",
-  });
-
-  const guestLoginDetails = {
-    email: "adarshbalika@gmail.com",
-    password: "adarshbalika",
-  };
-
-  const signupHandler = async () => {
+  const signupHandler = async (userDetails) => {
     try {
-      const {
-        data: { encodedToken },
-      } = await axios.post("/api/auth/signup", userDetails);
-      console.log(encodedToken);
-      localStorage.setItem("userToken", encodedToken);
+      const response = await signupCall(userDetails);
+      localStorage.setItem("userToken", response.data.encodedToken);
       navigate("/login");
-      toast.success("Signed up,successfully.", {
+      toast.success("Signed up successfully.", {
         style: {
           fontSize: "large",
           padding: ".5rem",
@@ -56,85 +27,43 @@ export const AuthContextProvider = ({ children }) => {
         },
       });
     } catch (error) {
-      console.error(error);
+      console.error("Signup error:", error);
+      toast.error("Signup failed. Please try again.");
     }
   };
 
-  const guestLogin = async (
-    email = guestLoginDetails.email,
-    password = guestLoginDetails.password
-  ) => {
+  const loginHandler = async (loginDetails) => {
     try {
-      const response = await axios.post("api/auth/login", {
-        email,
-        password,
-      });
-
+      const response = await loginCall(loginDetails);
       if (response.status === 200) {
         localStorage.setItem("userToken", response.data.encodedToken);
+        localStorage.setItem("user", JSON.stringify(response.data.foundUser));
         authDispatch({ type: "toggleIsLoggedIN", payload: true });
-
-        localStorage.setItem(
-          "userDetails",
-          JSON.stringify(response.data.foundUser)
-        );
-        navigate("/products");
-        toast.success("Signed in as Guest,successfully.", {
-          style: {
-            fontSize: "large",
-            padding: ".5rem",
-            background: "#252525",
-            color: "whitesmoke",
-          },
+        dataDispatch({
+          type: DATAACTIONS.SETLOGGEDINUSER,
+          payload: response.data.foundUser,
         });
+        navigate("/products");
       }
     } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const userLogin = async () => {
-    try {
-      const response = await axios.post("/api/auth/login", userLoginDetails);
-      console.log(userLoginDetails);
-      if (response.status === 200) {
-        console.log(response);
-        localStorage.setItem("userToken", response.data.encodedToken);
-
-        authDispatch({ type: "toggleIsLoggedIN", payload: true });
-        navigate("/products");
-        toast.success("Signed in successfully.", {
-          style: {
-            fontSize: "large",
-            padding: ".5rem",
-            background: "#252525",
-            color: "whitesmoke",
-          },
-        });
-      }
-    } catch (error) {
-      console.log(error);
+      console.error("Login error:", error);
+      toast.error("Login failed. Please try again.");
     }
   };
 
   const logout = () => {
     authDispatch({ type: "toggleIsLoggedIN", payload: false });
     dataDispatch({ type: DATAACTIONS.LOGOUT });
+    navigate("/login");
     localStorage.removeItem("userToken");
   };
 
   const values = {
     authState,
     authDispatch,
-    guestLogin,
-    userDetails,
-    setUserDetails,
     signupHandler,
-    userLoginDetails,
-    setUserLoginDetails,
-    userLogin,
+    loginHandler,
     logout,
-    // encodedToken,
   };
 
   return <authContext.Provider value={values}>{children}</authContext.Provider>;
