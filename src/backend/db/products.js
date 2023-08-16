@@ -10,7 +10,7 @@ export const products = [
     image:
       'https://res.cloudinary.com/donqbxlnc/image/upload/v1648516571/fashify/25d7ff1d-6680-4629-b7f8-dda51fb89dc61592396707535-Nautica-Men-Tshirts-3811592396706267-4_hxanis.webp',
     category: 'Men',
-    rating: '3.9',
+    rating: '5',
     size: 'L',
     description: 'Men Brown Pure Cotton Polo Collar Pure Cotton T-shirt',
     title: 'Louis Philippe Sport',
@@ -28,7 +28,7 @@ export const products = [
     description:
       'Girls Black Embellished Net & Velvet Finish Fit & Flare Dress',
     price: '499',
-    rating: '4.5',
+    rating: '1',
     size: 'M',
     image:
       'https://res.cloudinary.com/donqbxlnc/image/upload/v1648516848/fashify/b33911a2-038f-419a-afd9-e7f7949310441639746739865AllenSollyJuniorBoysMaroonSlimFitCasualShirt1_k5fy77.webp',
@@ -59,7 +59,7 @@ export const products = [
     image:
       'https://res.cloudinary.com/donqbxlnc/image/upload/v1648516630/fashify/f8e99b19-1b04-4968-828b-5add2713cd541602749203648-W-Women-Kurtas-9021602749202693-1_fglu21.webp',
     category: 'Women',
-    rating: '4.3',
+    rating: '3',
     size: 'L',
     description:
       'Women Off-White & Black Printed Kurta with Palazzos & Dupatta',
@@ -125,7 +125,7 @@ export const products = [
     image:
       'https://res.cloudinary.com/donqbxlnc/image/upload/v1648516553/fashify/1cfd3a7b-1864-4225-b56b-7c129071f4d41635325540976-Nautica-Men-Tshirts-5421635325540510-1_fjgoo2.webp',
     category: 'Men',
-    rating: '4.3',
+    rating: '1.3',
     size: 'M',
     description:
       'Men Maroon Solid Polo Collar T-shirt with Brand Logo Applique Detail',
@@ -142,7 +142,7 @@ export const products = [
     image:
       'https://res.cloudinary.com/donqbxlnc/image/upload/v1648516732/fashify/9f7ad33f-e553-4057-8d2a-b5290cf7f6e11608287542552-W-Women-Grey-Zari-Straight-Kurta-3991608287540676-1_fx3fzu.webp',
     category: 'Women',
-    rating: '4.5',
+    rating: '2.5',
     size: 'L',
     description: 'Women Navy Blue & White Printed Straight Kurta',
     title: 'anayna',
@@ -174,7 +174,7 @@ export const products = [
     image:
       'https://res.cloudinary.com/donqbxlnc/image/upload/v1648516456/fashify/f48fa8e4-ee70-4118-8a1d-a898037036bc1527767035968-Roadster-Men-Tshirts-1311527767034405-1_brfgzm.webp',
     category: 'Men',
-    rating: '4.5',
+    rating: '1.5',
     size: 'M',
     description: 'Men White Solid Polo Collar Pure Cotton T-shirt',
     title: 'U.S. Polo Assn.',
@@ -303,7 +303,7 @@ export const products = [
     image:
       'https://res.cloudinary.com/donqbxlnc/image/upload/v1648516510/fashify/4d2f609d-4ea2-4d5e-a26a-80cd5eb9e4181592396326747-Nautica-Men-Tshirts-8971592396324879-1_zb8w62.webp',
     category: 'Men',
-    rating: '4.3',
+    rating: '5',
     size: 'S',
     description:
       'Men Olive Green Slim Fit Polo Collar Cotton Pure Cotton T-shirt',
