@@ -5,6 +5,7 @@ export const initialDataState = {
   categories: [],
   cart: [],
   wishlist: [],
+  orderConfirmation: [],
 };
 
 export const DataReducer = (state, action) => {
@@ -38,6 +39,12 @@ export const DataReducer = (state, action) => {
         ...state,
         wishlist: [],
         cart: [],
+      };
+    }
+    case "SETORDERCONFIRMATION": {
+      return {
+        ...state,
+        orderConfirmation: [...state.orderConfirmation, action.payload],
       };
     }
     default:
