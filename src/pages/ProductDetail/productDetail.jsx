@@ -30,7 +30,7 @@ export const ProductDetail = () => {
       console.error(error);
     }
   };
-  console.log(clickedProduct);
+
   useEffect(() => {
     getClickedProduct();
   }, [productId]);
@@ -66,9 +66,9 @@ export const ProductDetail = () => {
                 <div>{description}</div>
 
                 <div className="reviews_class">
-                  <div> {rating} </div>
+                  <div> {rating}&#9733;</div>
                   <div className="hr"> | </div>
-                  <div>{reviews}</div>
+                  <div>{reviews} Ratings </div>
                 </div>
                 <div>
                   <div className="price">
