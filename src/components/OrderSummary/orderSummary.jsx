@@ -5,13 +5,37 @@ import { useNavigate } from "react-router-dom";
 import { cartContext } from "../../contexts/cartContext";
 import { addressContext } from "../../contexts/addressContext";
 import { DATAACTIONS } from "../../reducers/Actions/DataActions";
+import { removeFromCartHandler } from "../../services/APIcalls";
 
 export const OrderSummary = () => {
   const { dataState, dataDispatch } = useContext(dataContext);
   const { addressState, isAddressSelected } = useContext(addressContext);
-  const { totalMRP, totalDiscount, totalFinalPrice, clearCart } =
-    useContext(cartContext);
+  const { totalMRP, totalDiscount, totalFinalPrice } = useContext(cartContext);
   const navigate = useNavigate();
+
+  const clearCartHandler = async () => {
+    try {
+      for (const item of dataState.cart) {
+        await removeFromCartHandler(dataDispatch, item._id);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const placeOrderHandler = () => {
+    if (isAddressSelected) {
+      dataState.cart.forEach((cartItem) => {
+        dataDispatch({
+          type: "SETORDERCONFIRMATION",
+          payload: cartItem,
+        });
+      });
+      dataDispatch({ type: DATAACTIONS.FETCH_CART, payload: [] });
+      clearCartHandler();
+      navigate("/oc");
+    }
+  };
 
   return (
     <div className="ordersummary-container">
@@ -19,7 +43,7 @@ export const OrderSummary = () => {
       <div className="orderProducts">
         {dataState.cart.map((product) => (
           <div key={product._id} className="item">
-            {product.title} {product.price} X {product.qty}
+            {product.title} ({product.qty})
             <div>₹{product.price * product.qty}</div>
           </div>
         ))}
@@ -50,7 +74,7 @@ export const OrderSummary = () => {
           <div>{addressState.selectedAddress?.name}</div>
           <div> {addressState.selectedAddress.street}</div>
           <div>
-            {addressState.selectedAddress.city},{" "}
+            {addressState.selectedAddress.city},
             {addressState.selectedAddress.state}
           </div>
           <div> {addressState.selectedAddress.mobileNumber}</div>
@@ -58,14 +82,7 @@ export const OrderSummary = () => {
       ) : null}
 
       {isAddressSelected ? (
-        <button
-          onClick={() => {
-            navigate("/oc");
-            dataDispatch({ type: DATAACTIONS.FETCH_CART, payload: [] });
-          }}
-        >
-          Place order
-        </button>
+        <button onClick={placeOrderHandler}>Place order</button>
       ) : (
         <button>Select address to place order</button>
       )}
