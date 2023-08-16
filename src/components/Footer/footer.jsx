@@ -5,17 +5,16 @@ export const Footer = () => {
   return (
     <div className="main-container-footer">
       <div className="first-container">
-        <h2> Justyle </h2>
-        <p> Just Style like that </p>
+        <h2> Justyle : Just Style like that </h2>
         <div>
           <Link>
-            <p> github </p>
+            <p>Github </p>
           </Link>
           <Link>
-            <p> twitter </p>
+            <p> Twitter </p>
           </Link>
           <Link>
-            <p> linkedin </p>
+            <p> Linkedin </p>
           </Link>
         </div>
       </div>
