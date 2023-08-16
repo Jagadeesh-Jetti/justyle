@@ -3,7 +3,7 @@ import { FILTERACTIONS } from "./Actions/FIlterActions";
 export const initialFilterState = {
   selectedCategory: [],
   selectedPriceSort: "",
-  selectedRating: "",
+  selectedRating: "1",
   searchedValue: "",
 };
 
@@ -42,7 +42,7 @@ export const FilterReducer = (state, action) => {
         ...state,
         selectedCategory: [],
         selectedPriceSort: "",
-        selectedRating: "",
+        selectedRating: "1",
         searchedValue: "",
       };
     }
