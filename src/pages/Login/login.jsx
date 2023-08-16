@@ -72,9 +72,13 @@ export const Login = () => {
                 }
               />
             </div>
-            <button onClick={handleLogIn}>Login</button>
+            <button className="btn-login" onClick={handleLogIn}>
+              Login
+            </button>
           </form>
-          <button onClick={handleGuest}>Guest Login</button>
+          <button className="btn-login" onClick={handleGuest}>
+            Guest Login
+          </button>
           <h3>
             Don't have an account? <Link to="/signup">Sign up</Link>
           </h3>
