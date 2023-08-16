@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import React, { useContext } from "react";
 import { Navbar } from "../../components/NavBar/navBar";
 import { OrderSummary } from "../../components/OrderSummary/orderSummary";
 import { addressContext } from "../../contexts/addressContext";
@@ -21,8 +21,6 @@ export const Checkout = () => {
   } = useContext(addressContext);
   const navigate = useNavigate();
 
-  console.log(addressState.selectedAddress);
-
   return (
     <div className="checkout-page">
       <Navbar />
@@ -36,7 +34,7 @@ export const Checkout = () => {
             <div>
               <Button onClick={() => setShowAddAddress(true)}>
                 Add Address
-              </Button>{" "}
+              </Button>
             </div>
           </div>
 
@@ -58,21 +56,12 @@ export const Checkout = () => {
                           isAddressSelected &&
                           addressState.selectedAddress.id === address.id
                         }
-                        onClick={() => {
-                          if (addressState.address.length === 1) {
-                            setIsAddressSelected(true);
-                            addressDispatch({
-                              type: "SELECT_ADDRESS",
-                              payload: address.id,
-                            });
-                          } else if (addressState.address.length === 0) {
-                            setIsAddressSelected(false);
-                          } else {
-                            addressDispatch({
-                              type: "SELECT_ADDRESS",
-                              payload: address.id,
-                            });
-                          }
+                        onChange={() => {
+                          setIsAddressSelected(true);
+                          addressDispatch({
+                            type: "SELECT_ADDRESS",
+                            payload: address.id,
+                          });
                         }}
                       />
                     </div>
@@ -121,8 +110,8 @@ export const Checkout = () => {
         </div>
         {showAddAddress && (
           <div
-            // onClick={() => setShowEditAddress(false)}
             className="address_modal_outer_div"
+            onClick={() => setShowAddAddress(false)}
           >
             <div
               onClick={(e) => e.stopPropagation()}
@@ -134,8 +123,8 @@ export const Checkout = () => {
         )}
         {showEditAddress && (
           <div
-            // onClick={() => setShowEditAddress(false)}
             className="address_modal_outer_div"
+            onClick={() => setShowEditAddress(false)}
           >
             <div
               onClick={(e) => e.stopPropagation()}
@@ -152,3 +141,5 @@ export const Checkout = () => {
     </div>
   );
 };
+
+export default Checkout;
