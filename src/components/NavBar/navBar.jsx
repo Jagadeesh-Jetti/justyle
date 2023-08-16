@@ -1,8 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
 import "../NavBar/navBar.css";
-// import { useContext } from "react";
-// import { filterContext } from "../../contexts/filterContext";
-
 import { useContext } from "react";
 import { dataContext } from "../../contexts/dataContext";
 import { authContext } from "../../contexts/authContext";
@@ -16,9 +13,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 export const Navbar = () => {
-  const { dataState } = useContext(dataContext);
   const { filterDispatch, filterState } = useContext(filterContext);
-  const { authState, logout } = useContext(authContext);
   const navigate = useNavigate();
 
   return (
@@ -67,16 +62,6 @@ export const Navbar = () => {
         </div>
         <div className="icon-name">Cart</div>
       </Link>
-
-      {/* {authState?.isLoggedIn ? (
-        <Link onClick={logout} className="navbar-links">
-          <h3>Log out</h3>
-        </Link>
-      ) : (
-        <Link to="/login" className="navbar-links">
-          <h3>Login</h3>
-        </Link>
-      )} */}
     </div>
   );
 };
