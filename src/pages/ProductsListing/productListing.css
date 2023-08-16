@@ -11,16 +11,13 @@
     height: 100%;
 }
 
-.footer{
-    /* margin-top: 4rem; */
-}
-
 .filter-container {
   flex: 0 0 16.5%;
   flex-wrap: wrap;
   border-right: 1px solid wheat;
   border-top: 1px solid wheat;
   align-self: stretch; 
+  min-height: 100vh;
 }
 
   
@@ -28,4 +25,12 @@
     width: 100%;
     display: flex;
     flex: 3;
+}
+
+.center-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%; 
+  margin-left: 40%;
 }
