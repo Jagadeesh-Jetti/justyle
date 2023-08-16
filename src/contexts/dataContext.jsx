@@ -37,5 +37,6 @@ export const DataContextProvider = ({ children }) => {
     dataState,
     dataDispatch,
   };
+
   return <dataContext.Provider value={values}>{children}</dataContext.Provider>;
 };
