@@ -10,7 +10,7 @@ export const products = [
     image:
       'https://res.cloudinary.com/donqbxlnc/image/upload/v1648516571/fashify/25d7ff1d-6680-4629-b7f8-dda51fb89dc61592396707535-Nautica-Men-Tshirts-3811592396706267-4_hxanis.webp',
     category: 'Men',
-    rating: '5',
+    rating: '2',
     size: 'L',
     description: 'Men Brown Pure Cotton Polo Collar Pure Cotton T-shirt',
     title: 'Louis Philippe Sport',
@@ -320,7 +320,7 @@ export const products = [
     image:
       'https://res.cloudinary.com/donqbxlnc/image/upload/v1648516714/fashify/9e755293-b463-4e4e-8d43-6bec0abbee901628664093230-W-Women-Green-Floral-Printed-Kurta-2771628664092654-1_rhjnye.webp',
     category: 'Women',
-    rating: '4.2',
+    rating: '5',
     size: 'L',
     description:
       'Women Navy Blue Ethnic Motifs Embroidered Thread Work Kurta with Trousers & With Dupatta',
