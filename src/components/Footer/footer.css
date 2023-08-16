@@ -4,17 +4,19 @@
     width: 100rem;
     justify-content: space-around;
     color: rgb(21, 21, 22);
-    background-color: rgb(246, 244, 244);
+    background-color: rgb(204, 204, 204);
   }
   
   .first-container {
     width: max-content;
     display: inline-block;
+    text-align: left;
 
 }
   
   .second-container {
     display: inline-block;
+    text-align: left;
 
   }
   
