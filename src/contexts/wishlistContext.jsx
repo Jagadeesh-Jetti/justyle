@@ -9,6 +9,7 @@ export const wishlistContext = createContext();
 
 export const WishlistContextProvider = ({ children }) => {
   const { dataState } = useContext(dataContext);
+
   const addToWishlistHandler = async (product, dataDispatch) => {
     try {
       const encodedToken = localStorage.getItem("userToken");
@@ -28,7 +29,6 @@ export const WishlistContextProvider = ({ children }) => {
         });
         toast.success("Added to wishlist");
       }
-      // console.log(response.data.wishlist);
     } catch (error) {
       console.log(error);
     }
