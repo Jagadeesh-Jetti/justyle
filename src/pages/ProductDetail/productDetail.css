@@ -3,6 +3,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+  
 }
 
 .cards-layout {
@@ -13,6 +14,7 @@
   margin: 2rem;
   gap: 2rem;
   width: max-content;
+  min-height: 100vh;
   /* background-color: #322653; */
 }
 
