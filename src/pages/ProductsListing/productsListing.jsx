@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import React, { useContext } from "react";
 import { dataContext } from "../../contexts/dataContext";
 import { Navbar } from "../../components/NavBar/navBar";
 import { ProductCard } from "../../components/productCard/productCard";
@@ -13,13 +13,11 @@ export const ProductsListing = () => {
   const { dataState } = useContext(dataContext);
   const { filterState } = useContext(filterContext);
 
-  const filterdProducts = FilterFunctions(dataState, filterState);
+  const filteredProducts = FilterFunctions(dataState, filterState);
 
   return (
     <div className="mainPage-list-container">
-      <div>
-        <Navbar />
-      </div>
+      <Navbar />
 
       <div className="listingBody">
         <div className="filter-container">
@@ -27,19 +25,18 @@ export const ProductsListing = () => {
         </div>
 
         <div className="list-container">
-          {filterdProducts.length === 0 ? (
-            <Loader />
-          ) : (
-            <div>
-              <ProductCard fromListing={true} products={filterdProducts} />
+          {filteredProducts.length === 0 ? (
+            <div className="center-content">
+              <Loader />
+              <div>No results found</div>
             </div>
+          ) : (
+            <ProductCard fromListing={true} products={filteredProducts} />
           )}
         </div>
       </div>
 
-      <div className="footer">
-        <Footer />
-      </div>
+      <Footer />
     </div>
   );
 };
