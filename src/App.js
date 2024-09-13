@@ -38,7 +38,7 @@ function App() {
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/oc" element={<OrderConfirmation />} />
         <Route path="/address" element={<AddressForm />} />
-        <Route path="/product/:productId" element={<ProductDetail />} />
+        <Route path="/products/:productId" element={<ProductDetail />} />
 
           <Route path="/profile" element={ 
             <RequireAuth> 
