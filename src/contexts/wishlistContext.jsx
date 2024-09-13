@@ -12,7 +12,9 @@ export const WishlistContextProvider = ({ children }) => {
 
   const addToWishlistHandler = async (product, dataDispatch) => {
     try {
+      console.log(product._id);
       const encodedToken = localStorage.getItem("userToken");
+      // console.log(encodedToken);
       const response = await axios.post(
         "api/user/wishlist",
         { product },
@@ -22,7 +24,9 @@ export const WishlistContextProvider = ({ children }) => {
           },
         }
       );
+      console.log(response.data.wishlist);
       if (response.status === 201) {
+        // console.log(response.data.wishlist);
         dataDispatch({
           type: DATAACTIONS.FETCH_WISHLIST,
           payload: response.data.wishlist,
@@ -30,7 +34,7 @@ export const WishlistContextProvider = ({ children }) => {
         toast.success("Added to wishlist");
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 
