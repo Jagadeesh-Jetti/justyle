@@ -16,24 +16,33 @@ export const ProductDetail = () => {
   const { addToWishlistHandler, isProductInWishlist } =
     useContext(wishlistContext);
   const { authState } = useContext(authContext);
-  const { dataDispatch } = useContext(dataContext);
+  const { dataDispatch, dataState } = useContext(dataContext);
   const { productId } = useParams();
   const navigate = useNavigate();
 
-  const getClickedProduct = async () => {
-    try {
-      const response = await axios.get(`/api/products/${productId}`);
-      if (response.status === 200) {
-        setClickedProduct(response.data.product);
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  // const getClickedProduct = async () => {
+  //   try {
+  //     // console.log(productId);
+  //     const response = await axios.get(`/api/products/${productId}`);
+  //     // if (response.status === 200) {
+  //     //   // console.log(response.data.product);
+  //     //   setClickedProduct(response.data.product);
+  //     // }
 
-  useEffect(() => {
-    getClickedProduct();
-  }, [productId]);
+  //     setClickedProduct(response.data.product);
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
+
+  // console.log(clickedProduct);
+  // console.log(productId);
+
+  const findProduct = dataState.products.find(
+    (product) => product._id === productId
+  );
+  console.log(findProduct);
+  // setClickedProduct(findProduct);
 
   const {
     _id,
@@ -45,75 +54,105 @@ export const ProductDetail = () => {
     size,
     rating,
     reviews,
-  } = clickedProduct;
+  } = findProduct;
 
   return (
     <div>
       <Navbar />
 
       <div className="main-layout">
-        {Object.keys(clickedProduct).length === 0 ? (
+        {/* {Object.keys(clickedProduct).length === 0 ? (
           <Loader />
-        ) : (
-          <>
-            <div className="cards-layout">
-              <div className="image-container">
-                <img src={image} alt="loading" className="image" />
-              </div>
+        ) : ( */}
+        <>
+          <div className="cards-layout">
+            <div className="image-container">
+              <img src={image} alt="loading" className="image" />
+            </div>
 
+            <div>
+              <h2> {title} </h2>
+              <div>{description}</div>
+
+              <div className="reviews_class">
+                <div> {rating}&#9733;</div>
+                <div className="hr"> | </div>
+                <div>{reviews} Ratings </div>
+              </div>
               <div>
-                <h2> {title} </h2>
-                <div>{description}</div>
-
-                <div className="reviews_class">
-                  <div> {rating}&#9733;</div>
-                  <div className="hr"> | </div>
-                  <div>{reviews} Ratings </div>
+                <div className="price">
+                  <div> ₹{price} </div>
+                  <div className="original-price"> ₹{original_price} </div>
                 </div>
-                <div>
-                  <div className="price">
-                    <div> ₹{price} </div>
-                    <div className="original-price"> ₹{original_price} </div>
-                  </div>
-                  <div> inclusive of all Taxes</div>
-                </div>
-
-                <p> Size: {size} </p>
-
-                <button
-                  className="btn"
-                  onClick={() => {
-                    authState.isLoggedIn
-                      ? isProductInWishlist(_id)
-                        ? navigate("/wishlist")
-                        : addToWishlistHandler(clickedProduct, dataDispatch)
-                      : navigate("/login");
-                  }}
-                >
-                  {isProductInWishlist(_id)
-                    ? "Go to Wishlist"
-                    : "Add to Wishlist"}
-                </button>
-
-                <button
-                  className="btn"
-                  onClick={() => {
-                    authState.isLoggedIn
-                      ? isProductInCart(_id)
-                        ? navigate("/cart")
-                        : addToCartHandler(clickedProduct, dataDispatch)
-                      : navigate("/login");
-                  }}
-                >
-                  {isProductInCart(_id) ? "Go to Cart" : "Add to Cart"}
-                </button>
+                <div> inclusive of all Taxes</div>
               </div>
+
+              <p> Size: {size} </p>
+
+              <button
+                className="btn"
+                onClick={() => {
+                  // console.log(isProductInWishlist(_id));
+                  authState.isLoggedIn
+                    ? isProductInWishlist(_id)
+                      ? navigate("/wishlist")
+                      : addToWishlistHandler(findProduct, dataDispatch)
+                    : navigate("/login");
+                }}
+              >
+                {isProductInWishlist(_id)
+                  ? "Go to Wishlist"
+                  : "Add to Wishlist"}
+              </button>
+
+              <button
+                className="btn"
+                onClick={() => {
+                  authState.isLoggedIn
+                    ? isProductInCart(_id)
+                      ? navigate("/cart")
+                      : addToCartHandler(findProduct, dataDispatch)
+                    : navigate("/login");
+                }}
+              >
+                {isProductInCart(_id) ? "Go to Cart" : "Add to Cart"}
+              </button>
+              {/* <div className="buttons-container">
+                  <button
+                    className="btn"
+                    onClick={() => {
+                      authState.isLoggedIn
+                        ? isProductInWishlist(_id)
+                          ? navigate("/wishlist")
+                          : addToWishlistHandler(clickedProduct, dataDispatch)
+                        : navigate("/login");
+                    }}
+                  >
+                    {isProductInWishlist(_id)
+                      ? "Go to Wishlist"
+                      : "Add to Wishlist"}
+                  </button>
+
+                  <button
+                    className="btn"
+                    onClick={() => {
+                      authState.isLoggedIn
+                        ? isProductInCart(_id)
+                          ? updateQuantity("increment", _id)
+                          : addToCartHandler(clickedProduct, dataDispatch)
+                        : navigate("/login");
+                    }}
+                  >
+                    {isProductInCart(_id) ? "Add quantity" : "Add to Cart"}
+                  </button>
+                </div> */}
             </div>
-            <div className="footer">
-              <Footer />
-            </div>
-          </>
-        )}
+          </div>
+          <div className="footer">
+            <Footer />
+          </div>
+        </>
+        {/* )} */}
       </div>
     </div>
   );

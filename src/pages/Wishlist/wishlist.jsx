@@ -9,6 +9,7 @@ import "./wishlist.css";
 
 export const Wishlist = () => {
   const { dataState } = useContext(dataContext);
+  console.log(dataState.wishlist);
 
   return (
     <div className="wishlist-page">
