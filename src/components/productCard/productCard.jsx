@@ -26,10 +26,11 @@ export const ProductCard = ({ products, fromWishlist, fromListing }) => {
           const { _id, image, title, original_price, price, size, rating } =
             product;
 
+          // console.log(_id);
           const discount = Math.round((price / original_price) * 100);
           return (
             <div key={_id} className="productCard">
-              <Link to={`/product/${_id}`}>
+              <Link to={`/products/${_id}`}>
                 <div className="productImageDiv">
                   <img src={image} alt="loading" className="productImage" />
                 </div>
@@ -65,6 +66,7 @@ export const ProductCard = ({ products, fromWishlist, fromListing }) => {
                   <button
                     className="btn"
                     onClick={() => {
+                      console.log(isProductInWishlist(_id));
                       authState.isLoggedIn
                         ? isProductInWishlist(_id)
                           ? navigate("/wishlist")
