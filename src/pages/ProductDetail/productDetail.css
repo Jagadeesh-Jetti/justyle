@@ -1,9 +1,8 @@
-.main-layout{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  
+.main-layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .cards-layout {
@@ -35,17 +34,16 @@
   color: #322653;
 }
 
-
-.reviews_class{
-    display: flex;
-    border: 1px solid black;
-    width: max-content;
-    height: max-content;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    justify-content: space-around;
-    margin: 1rem;
-    margin-left: 0;
+.reviews_class {
+  display: flex;
+  border: 1px solid black;
+  width: max-content;
+  height: max-content;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  justify-content: space-around;
+  margin: 1rem;
+  margin-left: 0;
 }
 
 .product-price {
@@ -57,27 +55,27 @@
   font-size: 1rem;
 }
 
-.hr{
-    margin-left: 0.4rem;
-    margin-right: 0.4rem;
+.hr {
+  margin-left: 0.4rem;
+  margin-right: 0.4rem;
 }
 .product-rating {
   font-size: 1rem;
   color: #777;
 }
 
-.price{
-    display: flex;
-    gap: 0.5rem;
-    margin: 1rem;
-    margin-left: 0;
+.price {
+  display: flex;
+  gap: 0.5rem;
+  margin: 1rem;
+  margin-left: 0;
 }
 
 .original-price {
-    font-size: 1rem;
-    color: #777;
-    text-decoration: line-through; 
-  }
+  font-size: 1rem;
+  color: #777;
+  text-decoration: line-through;
+}
 
 .product-button {
   padding: 0.5rem 1rem;
